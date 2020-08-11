@@ -1,7 +1,6 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/nginx/nginx-conf.txt #####################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/nginx/nginx-conf.txt ##########################
 #### path: n/a (boilerplate) #######################################################################
 #### destination: /etc/nginx/nginx.conf (after install) ############################################
 #### purpose: Nginx main configuration file (server block configuration file is separate) ##########
@@ -116,7 +115,7 @@ http {
 ## several HTTP security headers are well-known best practices and are thus hardcoded ##
 ## to noindex your entire website, set SITE_NOINDEX to true in your ss-config ##
     
-    add_header X-Powered-By "SlickStack";
+    add_header X-Powered-By "SimpleStack";
     add_header Strict-Transport-Security "max-age=15552000" always; ## 180 days
     add_header X-FastCGI-Cache $upstream_cache_status;
     add_header X-Frame-Options SAMEORIGIN;
@@ -187,7 +186,7 @@ http {
 ####################################################################################################
     
 ## to improve scalability access_log is hardcode disabled to reduce CPU and disk usage ##
-## error_log is hardcoded in conjunction with SlickStack error handling settings ##
+## error_log is hardcoded in conjunction with SimpleStack error handling settings ##
     
     access_log off;
     error_log /var/www/logs/nginx.log crit;
@@ -243,7 +242,7 @@ http {
 ####################################################################################################
 
 ## for security and stability reasons we disable autoindexing and default to PHP indexes ##
-## because SlickStack supports only a single domain the web root is hardcoded ##
+## because SimpleStack supports only a single domain the web root is hardcoded ##
 
     autoindex off;
     index index.php;
@@ -258,7 +257,7 @@ http {
 }
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Future: attempt to invalidate cookies: tk_ai, tk_ni, tk_qs (Jetpack)

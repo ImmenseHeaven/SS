@@ -1,0 +1,64 @@
+;; Example blacklist.txt file
+
+;; Plugin Blacklist
+;; This file must be placed in the wp-content directory (e.g. wp-content/blacklist.txt)
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; Active Blacklist ;;
+;;;;;;;;;;;;;;;;;;;;;;
+
+;; Message for automatically deactivated plugins (multiple lines allowed)
+;; This message will appear in the WordPress admin notices section
+[message]
+The following plugins are not allowed and have been disabled:
+
+;; match any path (case insensitive)
+;; for exact directory matches use slashes e.g. /revslider/
+[path]
+revslider
+
+;; match exact class names (case sensitive)
+[classes]
+revslider_classname
+
+;; match exact function names (case sensitive)
+[functions]
+putRevSlider
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; Future Blacklist ;;
+;;;;;;;;;;;;;;;;;;;;;;
+
+;; Message for automatically deactivated plugins (multiple lines allowed)
+;; This message will appear in the WordPress admin notices section
+[message future]
+The following plugins will be deactivated shortly:
+
+;; match any path (case insensitive)
+;; for exact directory matches use slashes e.g. /revslider/
+[path future]
+
+;; match exact class names (case sensitive)
+[classes future]
+
+;; match exact function names (case sensitive)
+[functions future]
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Pause Blacklist ;;
+;;;;;;;;;;;;;;;;;;;;;
+
+;; Message for plugins that should be deactivated when not in use (multiple lines allowed)
+;; This message will appear in the WordPress admin notices section
+[message pause]
+The following utility plugins should be deactivated when not in use for better performance and security:
+
+;; match any path (case insensitive)
+;; for exact directory matches use slashes e.g. /revslider/
+[path pause]
+
+;; match exact class names (case sensitive)
+[classes pause]
+
+;; match exact function names (case sensitive)
+[functions pause]

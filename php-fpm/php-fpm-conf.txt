@@ -1,10 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; author: SlickStack ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; link: https://slickstack.io ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; mirror: http://mirrors.slickstack.io/php-fpm/php-fpm-conf.txt ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; author: SimpleStack ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; mirror: https://simplestack.git.supercluster.io/php-fpm/php-fpm-conf.txt ;;;;;;;;;;;;;;;;;;;;;;
 ;;;; path: n/a (boilerplate) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; destination: /etc/php/7.4/fpm/php-fpm.conf (after install) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; purpose: PHP-FPM configuration file boilerplate optimized for SlickStack servers ;;;;;;;;;;;;;;
+;;;; purpose: PHP-FPM configuration file boilerplate optimized for SimpleStack servers ;;;;;;;;;;;;;
 ;;;; module version: PHP-FPM 7.4.x ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -28,7 +27,7 @@ syslog.ident = php-fpm
 ;;;; PHP-FPM: Various Settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; because SlickStack does not use any containers we can safely daemonize PHP-FPM ;;
+;; because SimpleStack does not use any containers we can safely daemonize PHP-FPM ;;
 ;; take extreme caution in modifying below settings in your ss-config ;;
 
 daemonize = yes
@@ -49,7 +48,7 @@ rlimit_core = @FPM_RLIMIT_CORE
 include=/etc/php/7.4/fpm/pool.d/*.conf
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; External References Used By SlickStack To Improve This Script (Thanks, Interwebz) ;;;;;;;;;;;;;
+;;;; External References Used By SimpleStack To Improve This Script (Thanks, Interwebz) ;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Ref: https://www.php.net/manual/en/install.fpm.configuration.php

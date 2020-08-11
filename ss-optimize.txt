@@ -1,9 +1,8 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-optimize.txt ##########################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-optimize.txt ###############################
 #### path: /var/www/ss-optimize ####################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: Removes junk SQL data, converts MyISAM to InnoDB, and optimizes the database #########
@@ -13,14 +12,14 @@
 ## WE RECOMMEND RUNNING SS-OPTIMIZE MANUALLY OR NOT OFTEN IN CASE RESTORATION IS NEEDED ##
 ## UNLIKE SS-CLEAN (PHYSICAL FILES) THIS SCRIPT IS FOCUSED ONLY ON THE DATABASE ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -189,7 +188,7 @@ cp /var/www/meta/myisam_tables.txt /var/www/meta/myisam_tables.sql
 mysql $DB_NAME < /var/www/meta/myisam_tables.sql
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://dba.stackexchange.com/questions/56804/mysql-how-to-drop-all-tables-starting-with-a-prefix/56806

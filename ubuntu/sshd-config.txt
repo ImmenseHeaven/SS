@@ -1,14 +1,13 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ubuntu/sshd-config.txt ###################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ubuntu/sshd-config.txt ########################
 #### path: n/a (boilerplate) #######################################################################
 #### destination: /etc/ssh/sshd_config (after install) #############################################
 #### purpose: SSH configuration file boilerplate (inclues settings for jailed SFTP user) ###########
 #### module version: Ubuntu 20.04 LTS ##############################################################
 ####################################################################################################
 
-## SLICKSTACK CURRENTLY RELIES ON PASSWORD AUTHENTICATION AND DOES NOT SUPPORT SSH KEYS ##
+## SIMPLESTACK CURRENTLY RELIES ON PASSWORD AUTHENTICATION AND DOES NOT SUPPORT SSH KEYS ##
 ## THE SFTP USER IS JAILED AND CAN BE SHARED WITH TRUSTED WEB DESIGNERS (ETC) ##
 
 Include /etc/ssh/sshd_config.d/*.conf
@@ -132,7 +131,7 @@ AllowTcpForwarding no
 X11Forwarding no
 
 ####################################################################################################
-#### External References Used By SlickStack To Improve This Script (Thanks, Interwebz) #############
+#### External References Used By SimpleStack To Improve This Script (Thanks, Interwebz) ############
 ####################################################################################################
 
 ## Ref: https://help.ubuntu.com/community/SSH/OpenSSH/Keys

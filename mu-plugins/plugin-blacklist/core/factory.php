@@ -1,0 +1,75 @@
+<?php
+
+// Subpackage namespace
+namespace SuperCluster\PluginBlacklist\Core;
+
+// Aliased namespaces
+use \SuperCluster\PluginBlacklist\Admin;
+use \SuperCluster\PluginBlacklist\Plugin;
+use \SuperCluster\PluginBlacklist\Helpers;
+
+/**
+ * Object Factory class
+ *
+ * @package Plugin Blacklist
+ * @subpackage Core
+ */
+class Factory extends Helpers\Factory {
+
+
+
+	/**
+	 * Cron object
+	 */
+	protected function createCron() {
+		return Cron::instance($this->plugin);
+	}
+
+
+
+	/**
+	 * Plugin activation object
+	 */
+	protected function createActivation() {
+		return Plugin\Activation::instance($this->plugin);
+	}
+
+
+
+	/**
+	 * Plugin blacklist object
+	 */
+	protected function createBlacklist() {
+		return Plugin\Blacklist::instance($this->plugin);
+	}
+
+
+
+	/**
+	 * Plugin update object
+	 */
+	protected function createDisabler() {
+		return Plugin\Disabler::instance($this->plugin);
+	}
+
+
+
+	/**
+	 * Admin notices object
+	 */
+	protected function createNotices() {
+		return Admin\Notices::instance($this->plugin);
+	}
+
+
+
+	/**
+	 * Plugin checker object
+	 */
+	protected function createChecker() {
+		return Plugin\Checker::instance($this->plugin);
+	}
+
+
+
+}

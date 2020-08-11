@@ -1,12 +1,11 @@
-################################################################
-#### author: SlickStack ########################################
-#### link: https://slickstack.io ###############################
-#### mirror: http://mirrors.slickstack.io/monit/monitrc.txt ####
-#### path: /etc/monit/monitrc ##################################
-#### destination: (same as above path) #########################
-#### purpose: custom Monit configuration file ##################
-#### version: Monit 5.16 #######################################
-################################################################
+###########################################################################
+#### author: SimpleStack ##################################################
+#### mirror: https://simplestack.git.supercluster.io/monit/monitrc.txt ####
+#### path: /etc/monit/monitrc #############################################
+#### destination: (same as above path) ####################################
+#### purpose: custom Monit configuration file #############################
+#### version: Monit 5.16 ##################################################
+###########################################################################
 
 ## scheduling ##
 set daemon 300

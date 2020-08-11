@@ -1,7 +1,6 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ubuntu/sysctl.txt ########################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ubuntu/sysctl.txt #############################
 #### path: /etc/sysctl.conf ########################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: Ubuntu kernel configuration file (symlink = /etc/sysctl.d/99-sysctl.conf) ############
@@ -160,7 +159,7 @@ net.core.netdev_budget_usecs = 5000
 ## /etc/sysctl.d/
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://cromwell-intl.com/open-source/performance-tuning/tcp.html

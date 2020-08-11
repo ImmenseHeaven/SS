@@ -1,23 +1,22 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-perms.txt #############################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-perms.txt ##################################
 #### path: /var/www/ss-perms #######################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Resets all file and user permissions across the entire SlickStack server #############
+#### purpose: Resets all file and user permissions across the entire SimpleStack server ############
 #### module version: Ubuntu 20.04 LTS + WordPress 5.4.x ############################################
 ####################################################################################################
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -84,7 +83,7 @@ function ln {
 ####################################################################################################
 
 ## MESSAGE ##
-echo -e "\e[36mResetting all file permissions across entire SlickStack server...\e[0m"
+echo -e "\e[36mResetting all file permissions across entire SimpleStack server...\e[0m"
 
 ## Ubuntu system files ##
 chown root:root /etc/ssh/sshd_config &> /dev/null
@@ -96,7 +95,7 @@ chmod 0440 /etc/sudoers &> /dev/null
 chmod 0600 /var/spool/cron/crontabs/root &> /dev/null
 chmod 0664 /etc/sysctl.conf &> /dev/null
 
-## create wordpress group if does not exist and various SlickStack users/groups ##
+## create wordpress group if does not exist and various SimpleStack users/groups ##
 addgroup wordpress &> /dev/null
 adduser $user wordpress &> /dev/null ## deprecated soon
 adduser $SFTP_USER wordpress &> /dev/null
@@ -113,10 +112,10 @@ chown $SUDO_USER:$SUDO_USER /var/www/meta/.ssh/authorized_keys
 chmod 0664 /var/www/meta/.ssh/authorized_keys ## should be 0664 as per Ubuntu docs
 
 ####################################################################################################
-#### SS-Perms: Reset SlickStack Core Files Permissions #############################################
+#### SS-Perms: Reset SimpleStack Core Files Permissions ############################################
 ####################################################################################################
 
-## SlickStack Core bash scripts and cron jobs are still executable by root regardless ##
+## SimpleStack Core bash scripts and cron jobs are still executable by root regardless ##
 ## but these permissions help ensure consistency and better overall security ##
 
 ## ensure core directories exist (except html) ##
@@ -138,7 +137,7 @@ chown root:root /var ## must be root:root
 chown root:root /var/www ## must be root:root
 chmod 0755 /var/www ## must be 0755
 
-## SlickStack core scripts ##
+## SimpleStack core scripts ##
 chown root:root /var/www/*cron* ## must be root:root
 chown root:root /var/www/ss* ## must be root:root
 chmod 6770 /var/www/*cron* ## 4700 should also work
@@ -260,7 +259,7 @@ chmod 0775 /var/www/html/staging/wp-content/object-cache.php
 chmod 0775 /var/www/html/staging/wp-content/functions.php
 
 ####################################################################################################
-#### Reset Permissions: SlickStack (LEMP) Modules ##################################################
+#### Reset Permissions: SimpleStack (LEMP) Modules #################################################
 ####################################################################################################
 
 mkdir /var/run/mysqld
@@ -308,7 +307,7 @@ chown redis:redis /etc/redis/redis.conf &> /dev/null
 redis-cli flushall &> /dev/null
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: http://www.unixmantra.com/2013/04/unix-linux-file-permissions.html

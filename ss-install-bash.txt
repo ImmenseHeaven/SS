@@ -1,26 +1,25 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-install-bash.txt ######################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-install-bash.txt ###########################
 #### path: /var/www/ss-install-bash ################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Reinstalls the entire WP-CLI module along with SlickStack aliases (idempotent) #######
+#### purpose: Reinstalls the entire WP-CLI module along with SimpleStack aliases (idempotent) ######
 #### module version: Ubuntu 20.04 LTS + WP-CLI 2.4.0 ###############################################
 ####################################################################################################
 
 ## SS-CONFIG MUST BE PROPERLY CONFIGURED (AND CURRENT BUILD) BEFORE RUNNING SS-INSTALL ##
 ## ENSURE SS-CONFIG OPTIONS REMAIN CURRENT BY RUNNING SS-UPDATE OCCASIONALLY ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -90,7 +89,7 @@ function ln {
 ## here we retrieve latest WP-CLI files and move aliases to /var/www/meta/ ##
 
 ## MESSAGE: explain repos ##
-echo -e "\e[36mInstalling the WP-CLI module directly from SlickStack mirrors...\e[0m"
+echo -e "\e[36mInstalling the WP-CLI module directly from SimpleStack mirrors...\e[0m"
 
 ## uninstall current wp-cli versions ##
 rm /usr/local/bin/wp
@@ -108,9 +107,9 @@ ln /home/${SUDO_USER}/.wp-cli/config.yml /var/www/meta/wp-cli.yml &> /dev/null
 ln /root/.wp-cli/config.yml /var/www/meta/wp-cli.yml &> /dev/null
 
 ## download latest versions ##
-wget -O /tmp/wp-cli.phar http://mirrors.slickstack.io/wp-cli/wp-cli.phar
-wget -O /tmp/wp-cli.yml http://mirrors.slickstack.io/wp-cli/wp-cli-yml.txt
-wget -O /tmp/wp-completion.txt http://mirrors.slickstack.io/wp-cli/wp-completion.txt
+wget -O /tmp/wp-cli.phar https://simplestack.git.supercluster.io/wp-cli/wp-cli.phar
+wget -O /tmp/wp-cli.yml https://simplestack.git.supercluster.io/wp-cli/wp-cli-yml.txt
+wget -O /tmp/wp-completion.txt https://simplestack.git.supercluster.io/wp-cli/wp-completion.txt
 
 ## make files executable ##
 chmod +x /tmp/wp-cli.phar
@@ -133,11 +132,11 @@ chmod 6775 /var/www/meta/wp-cli.yml
 chmod 6775 /var/www/meta/.wp-completion
 
 ####################################################################################################
-### SS-Install-Bash: Install SlickStack Bash Aliases [ss] + Finalize WP-CLI [wp] ###################
+### SS-Install-Bash: Install SimpleStack Bash Aliases [ss] + Finalize WP-CLI [wp] ##################
 ####################################################################################################
 
 ## MESSAGE: explain repos ##
-echo -e "\e[36mInstalling Bash aliases for basic SlickStack commands...\e[0m"
+echo -e "\e[36mInstalling Bash aliases for basic SimpleStack commands...\e[0m"
 
 ## uninstall old ##
 rm /home/${SUDO_USER}/.bash-aliases
@@ -146,7 +145,7 @@ sed -i '/include Bash aliases/d' /home/${SUDO_USER}/.bashrc
 sed -i '\:var/www/meta:d' /home/${SUDO_USER}/.bashrc
 
 ## download ##
-wget -O /tmp/bash-aliases.txt http://mirrors.slickstack.io/ubuntu/bash-aliases.txt
+wget -O /tmp/bash-aliases.txt https://simplestack.git.supercluster.io/ubuntu/bash-aliases.txt
 
 ## copy files ##
 cp /tmp/bash-aliases.txt /var/www/meta/.bash-aliases
@@ -164,7 +163,7 @@ source /var/www/meta/.bash-aliases' >> /home/${SUDO_USER}/.bashrc
 source /home/${SUDO_USER}/.bashrc
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref:

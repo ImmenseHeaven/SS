@@ -1,14 +1,13 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ufw-firewall/ufw.txt #####################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ufw-firewall/ufw.txt ##########################
 #### path: /etc/default/ufw ########################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: UFW policy file with IPv6 support (retains the default Ubuntu kernel) ################
 #### module version: UFW Firewall 0.36.x ###########################################################
 ####################################################################################################
 
-## SlickStack is designed to support IPv6 as much as possible so it is enabled in UFW ##
+## SimpleStack is designed to support IPv6 as much as possible so it is enabled in UFW ##
 ## however the Ubuntu kernel is highly optimized so we disable the UFW kernel ##
 
 IPV6=yes
@@ -21,7 +20,7 @@ IPT_SYSCTL=/etc/sysctl.conf
 IPT_MODULES="nf_conntrack_ftp nf_nat_ftp nf_conntrack_netbios_ns"
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://wiki.ubuntu.com/UncomplicatedFirewall

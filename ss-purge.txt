@@ -1,9 +1,8 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-purge.txt #############################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-purge.txt ##################################
 #### path: /var/www/ss-purge #######################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: Clears all caches i.e. FastCGI (Nginx), PHP OPcache, Redis, and WP transients ########
@@ -13,14 +12,14 @@
 ## RUNNING SS-PURGE DURING TRAFFIC SPIKES MIGHT CAUSE SUDDEN STRESS TO SERVER RESOURCES ##
 ## KEEP IN MIND THAT FASTCGI CACHE IS DISABLED ALREADY ON STAGING SUBDIRECTORIES ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -135,7 +134,7 @@ redis-cli flushall &> /dev/null
 find /var/www/cache/ -not -path "*/opcache*" -type f -delete
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://www.php.net/manual/en/function.opcache-reset.php#121513

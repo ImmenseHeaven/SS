@@ -1,26 +1,25 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-clean.txt #############################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-clean.txt ##################################
 #### path: /var/www/ss-clean #######################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Cleans up various unsafe and unnecessary files on the SlickStack server ##############
+#### purpose: Cleans up various unsafe and unnecessary files on the SimpleStack server #############
 #### module version: Ubuntu 20.04 LTS ##############################################################
 ####################################################################################################
 
-## CERTAIN WP PLUGINS WILL BE FORCE-DELETED: https://slickstack.io/faq/blacklisted-plugins ##
+## CERTAIN WP PLUGINS WILL BE FORCE-DELETED ##
 ## SS-CLEAN DOES NOT PERFORM ANY MALWARE FILE SCANNING (PLEASE USE SS-SCAN INSTEAD) ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work #########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -95,10 +94,10 @@ cat /dev/null > /home/${SUDO_USER}/.bash_history
 cat /dev/null > /home/${SFTP_USER}/.bash_history
 
 ####################################################################################################
-#### SS-Clean: Delete Outdated + Unnecessary SlickStack Files ######################################
+#### SS-Clean: Delete Outdated + Unnecessary SimpleStack Files #####################################
 ####################################################################################################
 
-## as both SlickStack and WordPress evolve there are certain files that become irrelevant ##
+## as both SimpleStack and WordPress evolve there are certain files that become irrelevant ##
 ## most of the time this consists of temp install files, unused MU plugins, etc ##
 
 ## delete throwaway theme ##
@@ -116,7 +115,7 @@ rm /var/www/html/staging/wp-content/mu-plugins/remove-query-strings* ## no longe
 ####################################################################################################
 
 ## partly for backwards compatibility (but also stubborness) WP Core retains these files ##
-## none are critical yet they greatly hurt security thus SlickStack deletes them ##
+## none are critical yet they greatly hurt security thus SimpleStack deletes them ##
 
 ## delete old + exploitable WordPress Core files ##
 rm /var/www/html/readme*.html ## wordpresss junk files
@@ -172,14 +171,14 @@ rm /var/log/php7.2-fpm.log*
 rm /var/log/php-fpm/*
 rm /var/log/monit.log*
 
-## delete old SlickStack cache ##
+## delete old SimpleStack cache ##
 rm /etc/nginx/cache*
 
 ####################################################################################################
-#### SS-Clean: Cleanup SlickStack Core Files Under /var/www/ #######################################
+#### SS-Clean: Cleanup SimpleStack Core Files Under /var/www/ ######################################
 ####################################################################################################
 
-## delete SlickStack leftovers ##
+## delete SimpleStack leftovers ##
 rm /tmp/dos2unix*
 rm /var/www/'$'
 rm /var/www/ss
@@ -218,7 +217,7 @@ rm -v ~/secure_our_mysql.sh
 ## uninstall expect ##
 apt purge expect
 
-## delete SlickStack junk files ##
+## delete SimpleStack junk files ##
 find /var/www/ -name "*.save*" -type f -delete
 rm /var/www/wp.sql*
 rm /var/www/meta/myisam-tables.txt*
@@ -436,7 +435,7 @@ rm /var/www/html/wps-fbre-logs* ## unknown
 #### SS-Clean: Cleanup Files Under /var/www/html/wp-content/ #######################################
 ####################################################################################################
 
-## no cache folder in SlickStack ##
+## no cache folder in SimpleStack ##
 rm /var/www/html/wp-content/cache*
 
 ## delete unsafe/unecessary debug logs ##
@@ -458,7 +457,7 @@ rm /var/www/html/wp-content/easysocialsharebuttons-assets*
 rm /var/www/html/wp-content/et-cache* ## improper cache (Elegant Themes)
 rm /var/www/html/wp-content/evf-logs* ## Everest Forms junk files
 rm /var/www/html/wp-content/ewww* ## junk files generated by EWWW
-rm /var/www/html/wp-content/expdbs-migrations* ## junk files generated by Export Database (LittleBizzy)
+rm /var/www/html/wp-content/expdbs-migrations* ## junk files generated by Export Database
 rm /var/www/html/wp-content/fvm* ## minify files
 rm /var/www/html/wp-content/install.php* ## plugin junk files (Jetpack)
 # rm /var/www/html/wp-content/ip-geo-api* ## unknown
@@ -548,7 +547,7 @@ rm /var/www/html/wp-content/mu-plugins/SupportCenterMUAutoloader.php* ## Elegant
 ####################################################################################################
 
 ## even if you disable the Plugin Blacklist certain problematic plugins are still deleted ##
-## this is to ensure stability of SlickStack and to establish some best practices ##
+## this is to ensure stability of SimpleStack and to establish some best practices ##
 
 ## cleanup file types ##
 find /var/www/html/wp-content/plugins/ -name "*.gz" -type f -delete
@@ -669,7 +668,7 @@ rm /var/www/html/wp-content/plugins/linkman* ## deprecated, database thrashing
 rm /var/www/html/wp-content/plugins/mailchimp
 rm /var/www/html/wp-content/plugins/mailchimp-forms-by-mailmunch* ## malware/spyware
 rm /var/www/html/wp-content/plugins/maintenance-mode ## ss conflicts
-rm /var/www/html/wp-content/plugins/maintenance-mode-litlebizzy* ## ss conflicts
+rm /var/www/html/wp-content/plugins/maintenance-mode-supercluster* ## ss conflicts
 rm /var/www/html/wp-content/plugins/mainwp* ## ss conflicts, creates instability (MainWP)
 rm /var/www/html/wp-content/plugins/mainwp-child* ## ss conflicts, creates instability (MainWP)
 rm /var/www/html/wp-content/plugins/manual-image-crop*
@@ -903,7 +902,7 @@ rm /var/www/html/wp-content/uploads/fw-backup*
 rm /var/www/html/wp-content/uploads/cache* ## improper cache path
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://www.techrepublic.com/article/how-to-effectively-clear-your-bash-history/

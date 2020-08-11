@@ -1,27 +1,26 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/00-crontab.txt ###########################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/00-crontab.txt ################################
 #### path: /var/www/00-crontab (boilerplate remains here for reference) ############################
 #### destination: /var/spool/cron/crontabs/root (after install) ####################################
-#### purpose: SlickStack crontab boilerplate (never, ever, ever modify the root crontab) ###########
+#### purpose: SimpleStack crontab boilerplate (never, ever, ever modify the root crontab) ##########
 #### module version: Ubuntu 20.04 LTS ##############################################################
 ####################################################################################################
 
-## NEVER MODIFY THE SLICKSTACK CRONTAB AND CRON JOBS OR YOUR STACK WILL LOSE FUCTIONALITY ##
+## NEVER MODIFY THE SIMPLESTACK CRONTAB AND CRON JOBS OR YOUR STACK WILL LOSE FUCTIONALITY ##
 ## INSTEAD YOU CAN MODIFY INTERVAL SETTINGS IN SS-CONFIG OR CUSTOMIZE SS-CUSTOM ##
 
 ####################################################################################################
 #### Crontab: Use Bash Instead Of Sh + Set Default System Path #####################################
 ####################################################################################################
 
-## to take advantage of various formatting benefits (etc) SlickStack uses Bash only ##
+## to take advantage of various formatting benefits (etc) SimpleStack uses Bash only ##
 ## make sure to follow Bash coding standards for any custom shell scripts ##
 
 SHELL=/bin/bash
 
 ## we include this default system path setting below to ensure wget (etc) works properly ##
-## this path setting is also reincluded at the top of SlickStack Core scripts ##
+## this path setting is also reincluded at the top of SimpleStack Core scripts ##
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
@@ -29,7 +28,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 #### Crontab: Run Core Cron Jobs (The Sky Will Fall If You Modify This) ############################
 ####################################################################################################
 
-## this Crontab schedule is hardcoded to run SlickStack Core cron jobs and nothing else ##
+## this Crontab schedule is hardcoded to run SimpleStack Core cron jobs and nothing else ##
 ## the purpose of this approach is to achieve top-notch stability and security ##
 
 */3 * * * * /usr/bin/flock -w 0 /tmp/01-cron-often.lock /var/www/01-cron-often > /dev/null 2>&1
@@ -53,15 +52,15 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ####################################################################################################
 
 ## these minimal Crontab commands are emergency attempts to reinstall missing cron jobs ##
-## this approach is not foolproof (better to reinstall SlickStack occasionally) ##
+## this approach is not foolproof (better to reinstall SimpleStack occasionally) ##
 
-13 9 * * * /bin/bash -c 'test -f /var/www/01-cron-often || wget --no-check-certificate --no-cache --no-cookies --tries=3 --timeout=15 -O /var/www/01-cron-often http://mirrors.slickstack.io/01-cron-often.txt' > /dev/null 2>&1
-13 9 * * * /bin/bash -c 'test -f /var/www/02-cron-regular || wget --no-check-certificate --no-cache --no-cookies --tries=3 --timeout=15 -O /var/www/02-cron-regular http://mirrors.slickstack.io/02-cron-regular.txt' > /dev/null 2>&1
+13 9 * * * /bin/bash -c 'test -f /var/www/01-cron-often || wget --no-check-certificate --no-cache --no-cookies --tries=3 --timeout=15 -O /var/www/01-cron-often https://simplestack.git.supercluster.io/01-cron-often.txt' > /dev/null 2>&1
+13 9 * * * /bin/bash -c 'test -f /var/www/02-cron-regular || wget --no-check-certificate --no-cache --no-cookies --tries=3 --timeout=15 -O /var/www/02-cron-regular https://simplestack.git.supercluster.io/02-cron-regular.txt' > /dev/null 2>&1
 
 ## new line to avoid conflicts ##
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://linuxize.com/post/scheduling-cron-jobs-with-crontab/

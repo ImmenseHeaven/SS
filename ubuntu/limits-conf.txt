@@ -1,10 +1,9 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ubuntu/limits-conf.txt ###################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ubuntu/limits-conf.txt ########################
 #### path: n/a (boilerplate) #######################################################################
 #### destination: /etc/security/limits.conf (after install) ########################################
-#### purpose: Security limits configuration file boilerplate optimized for SlickStack ##############
+#### purpose: Security limits configuration file boilerplate optimized for SimpleStack #############
 #### module version: Ubuntu 20.04 LTS ##############################################################
 ####################################################################################################
 
@@ -16,7 +15,7 @@ root        soft    nofile    4096
 root        hard    nofile    65535
 
 ####################################################################################################
-#### External References Used By SlickStack To Improve This Script (Thanks, Interwebz) #############
+#### External References Used By SimpleStack To Improve This Script (Thanks, Interwebz) ############
 ####################################################################################################
 
 ## Ref: https://www.digitalocean.com/community/questions/optimizing-php7-with-nginx

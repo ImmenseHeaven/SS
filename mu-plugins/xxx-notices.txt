@@ -1,70 +1,53 @@
 <?php
 /*
 Plugin Name: XXX Common
-Plugin URI: https://www.littlebizzy.com/faq/slickstack-notices
-Description: Occasional notices designed to appear in the WP Admin Dashboard that mention important changes regarding the SlickStack environment (white-labeled).
+Plugin URI: https://www.supercluster.io
+Description: Occasional notices designed to appear in the WP Admin Dashboard that mention important changes regarding the SimpleStack environment (white-labeled).
 Version: 0.0.0
-Author: SlickStack
-Author URI: https://slickstack.io
+Author: SuperCluster
+Author URI: https://www.supercluster.io
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Prefix: SSCOMM
 */
 
-/** FUTURE VERSIONS WILL BE WHITE-LABELED SO YOU CAN HIDE THE SLICKSTACK AND LITTLEBIZZY BRANDING */
+/** FUTURE VERSIONS WILL BE WHITE-LABELED SO YOU CAN HIDE THE SIMPLESTACK AND SUPERCLUSTER BRANDING */
 
-/** SlickStack Admin Notices */
-// add_action('admin_notices', 'slickstack_admin_notices');
+/** SimpleStack Admin Notices */
+// add_action('admin_notices', 'simplestack_admin_notices');
 
-function slickstack_admin_notices() {
+function simplestack_admin_notices() {
     $current_user = wp_get_current_user();
     if(current_user_can('manage_options')) { ?>
-
-    <div class="notice notice-warning">
-    <p><strong>Jul 27, 2020:</strong> We are very excited to announce that <a href="/staging/" target="_blank">staging sites</a> are now included by default on the <code>/staging/</code> subfolder of every server, and these will sync from your production (live) website every 12 hours. This is a BETA feature, that we are still testing, so please be patient as we optimize the configuration with your feedback! If you notice any strange issues or have any suggestions, please let us know so that we can make these the easiest, most reliable staging sites in the history of WordPress. Currently, pushing from staging back to production is not yet supported, and we will also be adding a "timer" (clock) so you know how much time is left before your staging site is overwritten with latest data...</p>
-    <p><em>This message will disappear automatically after a few days, thank you. — SlickStack</em></p>
-    </div>
 
     <?php } else { }
 }
 
-/** SlickStack Admin Notices */
+/** SimpleStack Admin Notices */
 // if plugin or theme files found to be hacking PHP ini or error handling settings
 
-/** SlickStack Toolbar Shortcuts */
-add_action('admin_bar_menu', 'slickstack_menu', 25);
+/** SimpleStack Toolbar Shortcuts */
+add_action('admin_bar_menu', 'simplestack_menu', 25);
 
-function slickstack_menu() {
+function simplestack_menu() {
     $current_user = wp_get_current_user();
     if(current_user_can('manage_options')) {
         global $wp_admin_bar;
-        $menu_id = 'slickstack';
-        $wp_admin_bar->add_menu(array('id' => $menu_id, 'title' => __('SlickStack'), 'href' => '/'));
+        $menu_id = 'simplestack';
+        $wp_admin_bar->add_menu(array('id' => $menu_id, 'title' => __('SimpleStack'), 'href' => '/'));
         $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Adminer (phpMyAdmin)'), 'id' => 'adminer-link', 'href' => '/adminer', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Client Login'), 'id' => 'slickstack-account', 'href' => 'https://www.littlebizzy.com/account', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('CloudFlare Login'), 'id' => 'slickstack-cloudflare', 'href' => 'https://dash.cloudflare.com/login', 'meta' => array('target' => '_blank')));   
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('CodeGuard Login'), 'id' => 'slickstack-codeguard', 'href' => 'https://www.codeguard.com/login', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('New Support Ticket'), 'id' => 'slickstack-support', 'href' => 'https://www.littlebizzy.com/contact', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Facebook Chat'), 'id' => 'slickstack-messenger', 'href' => 'https://m.me/littlebizzy', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Telegram Channel'), 'id' => 'slickstack-telegram', 'href' => 'https://t.me/littlebizzy', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('FAQ'), 'id' => 'slickstack-faq', 'href' => 'https://www.littlebizzy.com/faq', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Disallowed Plugins'), 'id' => 'slickstack-blacklist', 'href' => 'http://mirrors.slickstack.io/wordpress/blacklist.txt', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Recommended Plugins'), 'id' => 'slickstack-rec-plugins', 'href' => 'https://www.littlebizzy.com/faq/recommended-plugins', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Recommended Themes'), 'id' => 'slickstack-rec-themes', 'href' => 'https://www.littlebizzy.com/faq/recommended-themes', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('User Guide'), 'id' => 'slickstack-guide', 'href' => 'https://www.littlebizzy.com/guide', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Free Plugins'), 'id' => 'slickstack-plugins', 'href' => 'https://www.littlebizzy.com/plugins', 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('DevOps Services'), 'id' => 'slickstack-services', 'href' => 'https://www.littlebizzy.com/services', 'meta' => array('target' => '_blank')));
+        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('CloudFlare Login'), 'id' => 'simplestack-cloudflare', 'href' => 'https://dash.cloudflare.com/login', 'meta' => array('target' => '_blank')));   
     } else { }
 }
 
 /** Toolbar Switcher (Production) */
-add_action('admin_bar_menu', 'slickstack_switcher_production', 25);
+add_action('admin_bar_menu', 'simplestack_switcher_production', 25);
 
-function slickstack_switcher_production() {
+function simplestack_switcher_production() {
     $current_user = wp_get_current_user();
     if(current_user_can('manage_options')) {
         global $wp_admin_bar;
-        $menu_id = 'slickstack_switcher_production';
+        $menu_id = 'simplestack_switcher_production';
         $prod_link = home_url( $path = '', $scheme = 'https' );
         $stag_suffix = '/staging/';
         $stag_total .= $prod_link . $stag_suffix;

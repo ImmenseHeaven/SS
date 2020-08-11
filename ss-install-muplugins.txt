@@ -1,26 +1,25 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-install-muplugins.txt #################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-install-muplugins.txt ######################
 #### path: /var/www/ss-install-muplugins ###########################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: Reinstalls various MU (Must-Use) plugins and object cache, etc (idempotent) ##########
-#### module version: Ubuntu 20.04 LTS + WordPress 5.4.x + LittleBizzy MU plugins ###################
+#### module version: Ubuntu 20.04 LTS + WordPress 5.4.x MU plugins #################################
 ####################################################################################################
 
-## SLICKSTACK SUPPORTS CUSTOM MU (MUST-USE) PLUGINS BUT REQUIRES A FEW DEFAULT PLUGINS ##
-## REQUIRED LITTLEBIZZY PLUGINS: AUTOLOADER, CUSTOM FUNCTIONS, AND OBJECT CACHE ##
+## SIMPLESTACK SUPPORTS CUSTOM MU (MUST-USE) PLUGINS BUT REQUIRES A FEW DEFAULT PLUGINS ##
+## REQUIRED PLUGINS: AUTOLOADER, CUSTOM FUNCTIONS, AND OBJECT CACHE ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -146,19 +145,19 @@ rm /var/www/html/staging/wp-content/mu-plugins/*
 ####################################################################################################
 
 ## download Autoloader (required script) files ##
-wget -O /tmp/autoloader.php http://mirrors.slickstack.io/mu-plugins/autoloader.txt
+wget -O /tmp/autoloader.php https://simplestack.git.supercluster.io/mu-plugins/autoloader.txt
 
 ## download Custom Functions + XXX Notices (required MU plugins) files  ##
-wget -O /tmp/custom-functions.zip http://mirrors.slickstack.io/mu-plugins/custom-functions.zip
-wget -O /tmp/xxx-notices.php http://mirrors.slickstack.io/mu-plugins/xxx-notices.txt
+wget -O /tmp/custom-functions.zip https://simplestack.git.supercluster.io/mu-plugins/custom-functions.zip
+wget -O /tmp/xxx-notices.php https://simplestack.git.supercluster.io/mu-plugins/xxx-notices.txt
 
 ## staging site ##
-wget -O /tmp/disable-emails.zip http://mirrors.slickstack.io/mu-plugins/disable-emails.zip
-wget -O /tmp/disable-default-runner.zip http://mirrors.slickstack.io/mu-plugins/disable-default-runner.zip
-wget -O /tmp/xxx-staging.php http://mirrors.slickstack.io/mu-plugins/xxx-staging.txt
+wget -O /tmp/disable-emails.zip https://simplestack.git.supercluster.io/mu-plugins/disable-emails.zip
+wget -O /tmp/disable-default-runner.zip https://simplestack.git.supercluster.io/mu-plugins/disable-default-runner.zip
+wget -O /tmp/xxx-staging.php https://simplestack.git.supercluster.io/mu-plugins/xxx-staging.txt
 
 ## download Object Cache (required drop-in plugin) files ##
-wget -O /tmp/object-cache.php http://mirrors.slickstack.io/mu-plugins/object-cache.txt
+wget -O /tmp/object-cache.php https://simplestack.git.supercluster.io/mu-plugins/object-cache.txt
 
 ## unzip various files ##
 unzip /tmp/custom-functions.zip -d /tmp
@@ -220,7 +219,7 @@ cp /tmp/object-cache.php /var/www/html/staging/wp-content/object-cache.php
 
 ## install functions.php file if none exists ##
 if [ ! -f /var/www/html/wp-content/functions.php ] && [ -z "$CUSTOM_FUNCTIONS_SOURCE" ]; then
-    wget -O /tmp/functions.php http://mirrors.slickstack.io/wordpress/functions.txt
+    wget -O /tmp/functions.php https://simplestack.git.supercluster.io/wordpress/functions.txt
     cp /tmp/functions.php /var/www/html/wp-content/functions.php
     cp /tmp/functions.php /var/www/html/staging/wp-content/functions.php
 elif [ ! -f /var/www/html/wp-content/functions.php ] && [ -n "$CUSTOM_FUNCTIONS_SOURCE" ]; then
@@ -234,7 +233,7 @@ fi
 ####################################################################################################
 
 ## below MU plugins are distinct from the required MU plugins that are always included ##
-## in the case these are missing the default LittleBizzy plugins are installed ##
+## in the case these are missing the default plugins are installed ##
 
 if [[ "$SS_MU_PLUGINS" == "custom" ]] && [[ -n "$MU_PLUGIN_01_SOURCE" ]] && [[ -n "$MU_PLUGIN_01_DIR" ]]; then
     ## download specified (custom) MU plugins ##
@@ -642,30 +641,30 @@ if [[ "$SS_MU_PLUGINS" == "custom" ]] && [[ -n "$MU_PLUGIN_01_SOURCE" ]] && [[ -
     cp /tmp/$MU_PLUGIN_99_DIR /var/www/html/staging/wp-content/mu-plugins/$MU_PLUGIN_99_DIR
     
 else
-## otherwise download default LittleBizzy MU plugins ##
-wget -O /tmp/clear-caches.zip http://mirrors.slickstack.io/mu-plugins/clear-caches.zip
-wget -O /tmp/cloudflare.zip http://mirrors.slickstack.io/mu-plugins/cloudflare.zip
-wget -O /tmp/dashboard-cleanup.zip http://mirrors.slickstack.io/mu-plugins/dashboard-cleanup.zip
-wget -O /tmp/delete-expired-transients.zip http://mirrors.slickstack.io/mu-plugins/delete-expired-transients.zip
-wget -O /tmp/disable-attachment-pages.zip http://mirrors.slickstack.io/mu-plugins/disable-attachment-pages.zip
-wget -O /tmp/disable-embeds.zip http://mirrors.slickstack.io/mu-plugins/disable-embeds.zip
-wget -O /tmp/disable-emojis.zip http://mirrors.slickstack.io/mu-plugins/disable-emojis.zip
-wget -O /tmp/disable-empty-trash.zip http://mirrors.slickstack.io/mu-plugins/disable-empty-trash.zip
-wget -O /tmp/disable-gutenberg.zip http://mirrors.slickstack.io/mu-plugins/disable-gutenberg.zip
-wget -O /tmp/disable-image-compression.zip http://mirrors.slickstack.io/mu-plugins/disable-image-compression.zip
-wget -O /tmp/disable-post-via-email.zip http://mirrors.slickstack.io/mu-plugins/disable-post-via-email.zip
-wget -O /tmp/disable-xml-rpc.zip http://mirrors.slickstack.io/mu-plugins/disable-xml-rpc.zip
-wget -O /tmp/error-log-monitor.zip http://mirrors.slickstack.io/mu-plugins/error-log-monitor.zip
-wget -O /tmp/force-https.zip http://mirrors.slickstack.io/mu-plugins/force-https.zip
-wget -O /tmp/force-strong-hashing.zip http://mirrors.slickstack.io/mu-plugins/force-strong-hashing.zip
-wget -O /tmp/header-cleanup.zip http://mirrors.slickstack.io/mu-plugins/header-cleanup.zip
-wget -O /tmp/limit-heartbeat.zip http://mirrors.slickstack.io/mu-plugins/limit-heartbeat.zip
-wget -O /tmp/maintenance-mode.zip http://mirrors.slickstack.io/mu-plugins/maintenance-mode.zip
-wget -O /tmp/minify-html.zip http://mirrors.slickstack.io/mu-plugins/minify-html.zip
-wget -O /tmp/plugin-blacklist.zip http://mirrors.slickstack.io/mu-plugins/plugin-blacklist.zip
-wget -O /tmp/server-status.zip http://mirrors.slickstack.io/mu-plugins/server-status.zip
-wget -O /tmp/sftp-details.zip http://mirrors.slickstack.io/mu-plugins/sftp-details.zip
-wget -O /tmp/virtual-robotstxt.zip http://mirrors.slickstack.io/mu-plugins/virtual-robotstxt.zip
+## otherwise download default MU plugins ##
+wget -O /tmp/clear-caches.zip https://simplestack.git.supercluster.io/mu-plugins/clear-caches.zip
+wget -O /tmp/cloudflare.zip https://simplestack.git.supercluster.io/mu-plugins/cloudflare.zip
+wget -O /tmp/dashboard-cleanup.zip https://simplestack.git.supercluster.io/mu-plugins/dashboard-cleanup.zip
+wget -O /tmp/delete-expired-transients.zip https://simplestack.git.supercluster.io/mu-plugins/delete-expired-transients.zip
+wget -O /tmp/disable-attachment-pages.zip https://simplestack.git.supercluster.io/mu-plugins/disable-attachment-pages.zip
+wget -O /tmp/disable-embeds.zip https://simplestack.git.supercluster.io/mu-plugins/disable-embeds.zip
+wget -O /tmp/disable-emojis.zip https://simplestack.git.supercluster.io/mu-plugins/disable-emojis.zip
+wget -O /tmp/disable-empty-trash.zip https://simplestack.git.supercluster.io/mu-plugins/disable-empty-trash.zip
+wget -O /tmp/disable-gutenberg.zip https://simplestack.git.supercluster.io/mu-plugins/disable-gutenberg.zip
+wget -O /tmp/disable-image-compression.zip https://simplestack.git.supercluster.io/mu-plugins/disable-image-compression.zip
+wget -O /tmp/disable-post-via-email.zip https://simplestack.git.supercluster.io/mu-plugins/disable-post-via-email.zip
+wget -O /tmp/disable-xml-rpc.zip https://simplestack.git.supercluster.io/mu-plugins/disable-xml-rpc.zip
+wget -O /tmp/error-log-monitor.zip https://simplestack.git.supercluster.io/mu-plugins/error-log-monitor.zip
+wget -O /tmp/force-https.zip https://simplestack.git.supercluster.io/mu-plugins/force-https.zip
+wget -O /tmp/force-strong-hashing.zip https://simplestack.git.supercluster.io/mu-plugins/force-strong-hashing.zip
+wget -O /tmp/header-cleanup.zip https://simplestack.git.supercluster.io/mu-plugins/header-cleanup.zip
+wget -O /tmp/limit-heartbeat.zip https://simplestack.git.supercluster.io/mu-plugins/limit-heartbeat.zip
+wget -O /tmp/maintenance-mode.zip https://simplestack.git.supercluster.io/mu-plugins/maintenance-mode.zip
+wget -O /tmp/minify-html.zip https://simplestack.git.supercluster.io/mu-plugins/minify-html.zip
+wget -O /tmp/plugin-blacklist.zip https://simplestack.git.supercluster.io/mu-plugins/plugin-blacklist.zip
+wget -O /tmp/server-status.zip https://simplestack.git.supercluster.io/mu-plugins/server-status.zip
+wget -O /tmp/sftp-details.zip https://simplestack.git.supercluster.io/mu-plugins/sftp-details.zip
+wget -O /tmp/virtual-robotstxt.zip https://simplestack.git.supercluster.io/mu-plugins/virtual-robotstxt.zip
 
 ## unzip them all ##
 unzip /tmp/clear-caches.zip -d /tmp
@@ -697,8 +696,8 @@ rm /var/www/html/wp-content/plugins/clear-caches*
 rm /var/www/html/staging/wp-content/plugins/clear-caches*
 rm /var/www/html/wp-content/plugins/cloudflare*
 rm /var/www/html/staging/wp-content/plugins/cloudflare*
-rm /var/www/html/wp-content/plugins/cf-littlebizzy* ## previous CloudFlare namespace
-rm /var/www/html/staging/wp-content/plugins/cf-littlebizzy* ## previous CloudFlare namespace
+rm /var/www/html/wp-content/plugins/cf-supercluster* ## previous CloudFlare namespace
+rm /var/www/html/staging/wp-content/plugins/cf-supercluster* ## previous CloudFlare namespace
 rm /var/www/html/wp-content/plugins/dashboard-cleanup*
 rm /var/www/html/staging/wp-content/plugins/dashboard-cleanup*
 rm /var/www/html/wp-content/plugins/delete-expired-transients*
@@ -826,7 +825,7 @@ fi
 rm /var/www/html/wp-content/mu-plugins/tmp*
 rm /var/www/html/staging/wp-content/mu-plugins/tmp*
 
-## temp fix to delete outdated SlickStack MU plugins ##
+## temp fix to delete outdated SimpleStack MU plugins ##
 rm /var/www/html/wp-content/mu-plugins/index-autoload*
 rm /var/www/html/staging/wp-content/mu-plugins/index-autoload*
 rm /var/www/html/wp-content/mu-plugins/remove-query-strings*
@@ -922,7 +921,7 @@ rm /var/www/html/purge-${RANDOM_RESET_OPCACHE}.php
 redis-cli flushall &> /dev/null
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://unix.stackexchange.com/questions/368246/cant-use-alias-in-script-even-if-i-define-it-just-above

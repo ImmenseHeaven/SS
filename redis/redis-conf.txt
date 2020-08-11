@@ -1,10 +1,9 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/redis/redis-conf.txt #####################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/redis/redis-conf.txt ##########################
 #### path: /etc/redis/redis.conf ###################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Redis server configuration file (used only as an object cache in SlickStack) #########
+#### purpose: Redis server configuration file (used only as an object cache in SimpleStack) ########
 #### module version: Redis 5.0.x + PHP-FPM 7.4.x ###################################################
 ####################################################################################################
 
@@ -149,5 +148,5 @@ aof-rewrite-incremental-fsync yes
 # active-defrag-cycle-max 75
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################

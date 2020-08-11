@@ -1,9 +1,8 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-encrypt.txt ###########################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-encrypt.txt ################################
 #### path: /var/www/ss-encrypt #####################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: Generates or renews free SSL certs via OpenSSL and Certbot (Lets Encrypt) ############
@@ -11,16 +10,16 @@
 ####################################################################################################
 
 ## SS-ENCRYPT WILL PERFORM BASIC NGINX MODIFICATION IN CASE IT RUNS WITHOUT SS-INSTALL ##
-## SLICKSTACK ATTEMPTS TO REVERT BACK TO OPENSSL IF ANY PROBLEMS WITH CERTBOT ##
+## SIMPLESTACK ATTEMPTS TO REVERT BACK TO OPENSSL IF ANY PROBLEMS WITH CERTBOT ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -184,7 +183,7 @@ rm /etc/letsencrypt/live/*
 #### SS-Encrypt: Prepare Domain Variables + (Re)generate Lets Encrypt SSL Certificates #############
 ####################################################################################################
 
-## for stability reasons SlickStack deletes old Lets Encrypt certs and requests new certs ##
+## for stability reasons SimpleStack deletes old Lets Encrypt certs and requests new certs ##
 ## this approach supports changing from WP single site to Multisite installs (etc) ##
 
 ## SINGLE SITE CERTS + EMAIL ALERTS ##
@@ -348,7 +347,7 @@ if [[ $SITE_DOMAIN = *.*.*.* ]]; then
 fi
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://linuxize.com/post/secure-apache-with-let-s-encrypt-on-ubuntu-18-04/

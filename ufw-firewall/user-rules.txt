@@ -1,7 +1,6 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ufw-firewall/user-rules.txt ##############################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ufw-firewall/user-rules.txt ###################
 #### path: n/a (boilerplate) #######################################################################
 #### destination: /etc/ufw/user.rules (after install) ##############################################
 #### purpose: UFW user rules IPv4 configuration file boilerplate (supports custom SSH port) ########
@@ -72,7 +71,7 @@
 COMMIT
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://wiki.ubuntu.com/UncomplicatedFirewall

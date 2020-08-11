@@ -1,26 +1,25 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-install-mysql.txt #####################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-install-mysql.txt ##########################
 #### path: /var/www/ss-install-mysql ###############################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Reinstalls the entire MySQL module for SlickStack servers (idempotent) ###############
+#### purpose: Reinstalls the entire MySQL module for SimpleStack servers (idempotent) ##############
 #### module version: Ubuntu 20.04 LTS + MySQL 8.0.x ################################################
 ####################################################################################################
 
 ## MYSQL IS PHASING OUT NATIVE PASSWORDS IN FAVOR OF UNIX SOCKETS AND/OR SHA2 HASHING ##
 ## WE USE SOCKETS FOR CORE SCRIPTS AND AIM TO USE TCP/SSL/SHA2 FOR WORDPRESS ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -117,7 +116,7 @@ apt update
 ####################################################################################################
 
 ## here we prepare the MySQL root password using the Debian/Ubuntu debconf utilities ##
-## all SlickStack scripts connect to MySQL via root@localhost using sockets ##
+## all SimpleStack scripts connect to MySQL via root@localhost using sockets ##
 
 # repair debconf (see: sudo debconf-show mysql-community-server-8.0) ##
 sudo /usr/share/debconf/fix_db.pl
@@ -230,7 +229,7 @@ sleep 15s
 rm /tmp/my.cnf
 
 ## install custom my.cnf config file ##
-wget -O /tmp/my.cnf http://mirrors.slickstack.io/mysql/my-cnf.txt
+wget -O /tmp/my.cnf https://simplestack.git.supercluster.io/mysql/my-cnf.txt
 
 #### MySQL Settings ####
 ## SQL mode ##
@@ -354,7 +353,7 @@ rm /tmp/init-mysql.txt*
 rm /var/run/mysqld.bak*
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## mysql alias flags ##
@@ -395,7 +394,7 @@ rm /var/run/mysqld.bak*
 
 
 # rm /tmp/init-mysql.txt*
-# wget -O /tmp/init-mysql.txt http://mirrors.slickstack.io/mysql/init-mysql.txt
+# wget -O /tmp/init-mysql.txt https://simplestack.git.supercluster.io/mysql/init-mysql.txt
 # sed -i "s/@DB_PASSWORD_ROOT/${DB_PASSWORD_ROOT}/g" /tmp/init-mysql.txt
 # chown mysql:mysql /tmp/init-mysql.txt
 # chmod 0775 /tmp/init-mysql.txt
@@ -428,7 +427,6 @@ rm /var/run/mysqld.bak*
 # SELECT User,plugin from mysql.user where User='root';
 # SELECT user,authentication_string,plugin,host FROM mysql.user;
 
-## Ref: https://github.com/littlebizzy/slickstack/issues/23
 ## Ref: https://stackoverflow.com/questions/36301100/how-do-i-turn-off-the-mysql-password-validation
 ## Ref: https://dba.stackexchange.com/questions/4614/cannot-drop-anonymous-user-from-mysql-user
 ## Ref: https://www.networkinghowtos.com/howto/disable-remote-root-logins-into-mysql/

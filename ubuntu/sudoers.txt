@@ -1,7 +1,6 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ubuntu/sudoers.txt #######################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ubuntu/sudoers.txt ############################
 #### path: n/a (boilerplate) #######################################################################
 #### destination: /etc/sudoers (after install) #####################################################
 #### purpose: Sudoers configuration file boilerplate (typically configured using Visudo) ###########
@@ -30,7 +29,7 @@ root ALL=(ALL:ALL) ALL
 @SUDO_USER ALL=(ALL:ALL) ALL
 
 ####################################################################################################
-#### Sudoers: Custom Sudo Privileges (e.g. No Password Prompts) For SlickStack + WP-CLI ############
+#### Sudoers: Custom Sudo Privileges (e.g. No Password Prompts) For SimpleStack + WP-CLI ###########
 ####################################################################################################
 
 @SUDO_USER ALL=(ALL) NOPASSWD: /var/www/ss*
@@ -50,7 +49,7 @@ root ALL=(ALL:ALL) ALL
 #### includedir /etc/sudoers.d
 
 ####################################################################################################
-#### External References Used By SlickStack To Improve This Script (Thanks, Interwebz) #############
+#### External References Used By SimpleStack To Improve This Script (Thanks, Interwebz) ############
 ####################################################################################################
 
 ## Ref: https://askubuntu.com/questions/671026/how-to-make-super-user-permissions-last-longer-than-using-sudo

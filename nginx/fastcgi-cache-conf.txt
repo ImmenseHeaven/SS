@@ -1,7 +1,6 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/nginx/fastcgi-cache-conf.txt #############################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/nginx/fastcgi-cache-conf.txt ##################
 #### path: n/a (boilerplate) #######################################################################
 #### destination: /etc/nginx/conf.d/fastcgi-cache.conf (after install) #############################
 #### purpose: FastCGI Cache (Nginx) configuration file that is currently not being used ############
@@ -25,5 +24,5 @@
     add_header X-FastCGI-Cache $upstream_cache_status;
 
 ####################################################################################################
-#### External References Used By SlickStack To Improve This Script #################################
+#### External References Used By SimpleStack To Improve This Script ################################
 ####################################################################################################

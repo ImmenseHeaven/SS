@@ -1,9 +1,8 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-dump.txt ##############################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-dump.txt ###################################
 #### path: /var/www/ss-dump ########################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: Dumps the live MySQL database to /var/www/wp.sql (the SFTP user can access) ##########
@@ -12,14 +11,14 @@
 
 ## KEEP IN MIND THAT SS-DUMP MIGHT ONLY FUNCTION PROPERLY ON LOCALHOST DATABASES ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -121,7 +120,7 @@ chmod 0775 /var/www/meta/wp.sql
 echo -e "\e[93mSUCCESS! The MySQL database was dumped to /var/www/wp.sql.\e[0m" >&2
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html

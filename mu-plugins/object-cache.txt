@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Object Cache
-Plugin URI: https://www.littlebizzy.com/plugins/object-cache
+Plugin URI: https://www.supercluster.io
 Description: Drop-in persistent object cache for WordPress based on Redis in-memory storage that supports Predis, clusters, and WP-CLI (forked from PressJitsu).
 Version: 1.2.3
-Author: LittleBizzy
-Author URI: https://www.littlebizzy.com
+Author: SuperCluster
+Author URI: https://www.supercluster.io
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Upstream Plugin Name: Pressjitsu Redis Object Cache

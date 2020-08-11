@@ -1,7 +1,6 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ufw-firewall/ufw-conf.txt ################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ufw-firewall/ufw-conf.txt #####################
 #### path: /etc/ufw/ufw.conf #######################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: UFW basic configuration file with enabled and low-level logging hardcoded ############
@@ -15,7 +14,7 @@ ENABLED=yes
 LOGLEVEL=low
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://wiki.ubuntu.com/UncomplicatedFirewall

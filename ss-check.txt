@@ -1,23 +1,22 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-check.txt #############################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-check.txt ##################################
 #### path: /var/www/ss-check #######################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Downloads latest SlickStack Core files (except itself = done by ss-worker) ###########
+#### purpose: Downloads latest SimpleStack Core files (except itself = done by ss-worker) ##########
 #### module version: Ubuntu 20.04 LTS ##############################################################
 ####################################################################################################
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -88,57 +87,57 @@ rm /tmp/ss*
 rm /tmp/*cron*
 
 ####################################################################################################
-#### SS-Check: Download Latest SlickStack Core Files (Does Not Download Any Modules) ###############
+#### SS-Check: Download Latest SimpleStack Core Files (Does Not Download Any Modules) ##############
 ####################################################################################################
 
 ## download latest core cron jobs ##
-wget -O /tmp/00-crontab http://mirrors.slickstack.io/00-crontab.txt
-wget -O /tmp/01-cron-often http://mirrors.slickstack.io/01-cron-often.txt
-wget -O /tmp/02-cron-regular http://mirrors.slickstack.io/02-cron-regular.txt
-wget -O /tmp/03-cron-quarter-hourly http://mirrors.slickstack.io/03-cron-quarter-hourly.txt
-wget -O /tmp/04-cron-half-hourly http://mirrors.slickstack.io/04-cron-half-hourly.txt 
-wget -O /tmp/05-cron-hourly http://mirrors.slickstack.io/05-cron-hourly.txt
-wget -O /tmp/06-cron-quarter-daily http://mirrors.slickstack.io/06-cron-quarter-daily.txt
-wget -O /tmp/07-cron-half-daily http://mirrors.slickstack.io/07-cron-half-daily.txt
-wget -O /tmp/08-cron-daily http://mirrors.slickstack.io/08-cron-daily.txt
-wget -O /tmp/09-cron-half-weekly http://mirrors.slickstack.io/09-cron-half-weekly.txt
-wget -O /tmp/10-cron-weekly http://mirrors.slickstack.io/10-cron-weekly.txt
-wget -O /tmp/11-cron-half-monthly http://mirrors.slickstack.io/11-cron-half-monthly.txt
-wget -O /tmp/12-cron-monthly http://mirrors.slickstack.io/12-cron-monthly.txt
-wget -O /tmp/13-cron-sometimes http://mirrors.slickstack.io/13-cron-sometimes.txt
+wget -O /tmp/00-crontab https://simplestack.git.supercluster.io/00-crontab.txt
+wget -O /tmp/01-cron-often https://simplestack.git.supercluster.io/01-cron-often.txt
+wget -O /tmp/02-cron-regular https://simplestack.git.supercluster.io/02-cron-regular.txt
+wget -O /tmp/03-cron-quarter-hourly https://simplestack.git.supercluster.io/03-cron-quarter-hourly.txt
+wget -O /tmp/04-cron-half-hourly https://simplestack.git.supercluster.io/04-cron-half-hourly.txt 
+wget -O /tmp/05-cron-hourly https://simplestack.git.supercluster.io/05-cron-hourly.txt
+wget -O /tmp/06-cron-quarter-daily https://simplestack.git.supercluster.io/06-cron-quarter-daily.txt
+wget -O /tmp/07-cron-half-daily https://simplestack.git.supercluster.io/07-cron-half-daily.txt
+wget -O /tmp/08-cron-daily https://simplestack.git.supercluster.io/08-cron-daily.txt
+wget -O /tmp/09-cron-half-weekly https://simplestack.git.supercluster.io/09-cron-half-weekly.txt
+wget -O /tmp/10-cron-weekly https://simplestack.git.supercluster.io/10-cron-weekly.txt
+wget -O /tmp/11-cron-half-monthly https://simplestack.git.supercluster.io/11-cron-half-monthly.txt
+wget -O /tmp/12-cron-monthly https://simplestack.git.supercluster.io/12-cron-monthly.txt
+wget -O /tmp/13-cron-sometimes https://simplestack.git.supercluster.io/13-cron-sometimes.txt
 
 ## download latest core Bash scripts (except ss-check) ##
-wget -O /tmp/ss-clean http://mirrors.slickstack.io/ss-clean.txt
-wget -O /tmp/ss-config-sample http://mirrors.slickstack.io/ss-config-sample.txt
-wget -O /tmp/ss-dos2unix http://mirrors.slickstack.io/ss-dos2unix.txt
-wget -O /tmp/ss-dump http://mirrors.slickstack.io/ss-dump.txt
-wget -O /tmp/ss-encrypt http://mirrors.slickstack.io/ss-encrypt.txt
-wget -O /tmp/ss-import http://mirrors.slickstack.io/ss-import.txt
-wget -O /tmp/ss-install http://mirrors.slickstack.io/ss-install.txt
-wget -O /tmp/ss-install-adminer http://mirrors.slickstack.io/ss-install-adminer.txt
-wget -O /tmp/ss-install-bash http://mirrors.slickstack.io/ss-install-bash.txt
-wget -O /tmp/ss-install-clamav http://mirrors.slickstack.io/ss-install-clamav.txt
-wget -O /tmp/ss-install-misc http://mirrors.slickstack.io/ss-install-misc.txt
-wget -O /tmp/ss-install-muplugins http://mirrors.slickstack.io/ss-install-muplugins.txt
-wget -O /tmp/ss-install-mysql http://mirrors.slickstack.io/ss-install-mysql.txt
-wget -O /tmp/ss-install-nginx http://mirrors.slickstack.io/ss-install-nginx.txt
-wget -O /tmp/ss-install-php http://mirrors.slickstack.io/ss-install-php.txt
-wget -O /tmp/ss-install-postfix http://mirrors.slickstack.io/ss-install-postfix.txt
-wget -O /tmp/ss-install-redis http://mirrors.slickstack.io/ss-install-redis.txt
-wget -O /tmp/ss-install-ufw http://mirrors.slickstack.io/ss-install-ufw.txt
-wget -O /tmp/ss-install-wordpress http://mirrors.slickstack.io/ss-install-wordpress.txt
-wget -O /tmp/ss-install-wpconfig http://mirrors.slickstack.io/ss-install-wpconfig.txt
-wget -O /tmp/ss-optimize http://mirrors.slickstack.io/ss-optimize.txt
-wget -O /tmp/ss-perms http://mirrors.slickstack.io/ss-perms.txt
-wget -O /tmp/ss-purge http://mirrors.slickstack.io/ss-purge.txt
-wget -O /tmp/ss-restart http://mirrors.slickstack.io/ss-restart.txt
-wget -O /tmp/ss-scan http://mirrors.slickstack.io/ss-scan.txt
-wget -O /tmp/ss-sync http://mirrors.slickstack.io/ss-sync.txt
-wget -O /tmp/ss-update http://mirrors.slickstack.io/ss-update.txt
-wget -O /tmp/ss-worker http://mirrors.slickstack.io/ss-worker.txt
+wget -O /tmp/ss-clean https://simplestack.git.supercluster.io/ss-clean.txt
+wget -O /tmp/ss-config-sample https://simplestack.git.supercluster.io/ss-config-sample.txt
+wget -O /tmp/ss-dos2unix https://simplestack.git.supercluster.io/ss-dos2unix.txt
+wget -O /tmp/ss-dump https://simplestack.git.supercluster.io/ss-dump.txt
+wget -O /tmp/ss-encrypt https://simplestack.git.supercluster.io/ss-encrypt.txt
+wget -O /tmp/ss-import https://simplestack.git.supercluster.io/ss-import.txt
+wget -O /tmp/ss-install https://simplestack.git.supercluster.io/ss-install.txt
+wget -O /tmp/ss-install-adminer https://simplestack.git.supercluster.io/ss-install-adminer.txt
+wget -O /tmp/ss-install-bash https://simplestack.git.supercluster.io/ss-install-bash.txt
+wget -O /tmp/ss-install-clamav https://simplestack.git.supercluster.io/ss-install-clamav.txt
+wget -O /tmp/ss-install-misc https://simplestack.git.supercluster.io/ss-install-misc.txt
+wget -O /tmp/ss-install-muplugins https://simplestack.git.supercluster.io/ss-install-muplugins.txt
+wget -O /tmp/ss-install-mysql https://simplestack.git.supercluster.io/ss-install-mysql.txt
+wget -O /tmp/ss-install-nginx https://simplestack.git.supercluster.io/ss-install-nginx.txt
+wget -O /tmp/ss-install-php https://simplestack.git.supercluster.io/ss-install-php.txt
+wget -O /tmp/ss-install-postfix https://simplestack.git.supercluster.io/ss-install-postfix.txt
+wget -O /tmp/ss-install-redis https://simplestack.git.supercluster.io/ss-install-redis.txt
+wget -O /tmp/ss-install-ufw https://simplestack.git.supercluster.io/ss-install-ufw.txt
+wget -O /tmp/ss-install-wordpress https://simplestack.git.supercluster.io/ss-install-wordpress.txt
+wget -O /tmp/ss-install-wpconfig https://simplestack.git.supercluster.io/ss-install-wpconfig.txt
+wget -O /tmp/ss-optimize https://simplestack.git.supercluster.io/ss-optimize.txt
+wget -O /tmp/ss-perms https://simplestack.git.supercluster.io/ss-perms.txt
+wget -O /tmp/ss-purge https://simplestack.git.supercluster.io/ss-purge.txt
+wget -O /tmp/ss-restart https://simplestack.git.supercluster.io/ss-restart.txt
+wget -O /tmp/ss-scan https://simplestack.git.supercluster.io/ss-scan.txt
+wget -O /tmp/ss-sync https://simplestack.git.supercluster.io/ss-sync.txt
+wget -O /tmp/ss-update https://simplestack.git.supercluster.io/ss-update.txt
+wget -O /tmp/ss-worker https://simplestack.git.supercluster.io/ss-worker.txt
 
 ####################################################################################################
-#### SS-Check: Copy Latest SlickStack Core Files To Jailed Root (/var/www) #########################
+#### SS-Check: Copy Latest SimpleStack Core Files To Jailed Root (/var/www) ########################
 ####################################################################################################
 
 ## new ##
@@ -188,7 +187,7 @@ cp /tmp/ss-update /var/www/ss-update
 cp /tmp/ss-worker /var/www/ss-worker
 
 ####################################################################################################
-#### SS-Check: Reset SlickStack Core Files Permissions (Skips Web Root) ############################
+#### SS-Check: Reset SimpleStack Core Files Permissions (Skips Web Root) ###########################
 ####################################################################################################
 
 ## ensure core directories exist (except html) ##
@@ -209,7 +208,7 @@ chown root:root /var ## must be root:root
 chown root:root /var/www ## must be root:root
 chmod 0755 /var/www ## must be 0755
 
-## SlickStack core scripts ##
+## SimpleStack core scripts ##
 chown root:root /var/www/*cron* ## must be root:root
 chown root:root /var/www/ss* ## must be root:root
 chmod 6770 /var/www/*cron* ## 4700 should also work
@@ -257,7 +256,7 @@ rm /tmp/ss*
 rm /tmp/*cron*
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://linuxize.com/post/bash-functions/

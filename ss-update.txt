@@ -1,26 +1,25 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-update.txt ############################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-update.txt #################################
 #### path: /var/www/ss-update ######################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Updates and cleans up SlickStack modules (Ubuntu packages) and WP extensions #########
+#### purpose: Updates and cleans up SimpleStack modules (Ubuntu packages) and WP extensions ########
 #### module version: Ubuntu 20.04 LTS ##############################################################
 ####################################################################################################
 
 ## YOU CAN SAFELY RUN SS-UPDATE WITH NO CHANGES TO YOUR LEMP MODULE CONFIGURATION FILES ##
 ## IN CASE YOU ACCIDENTALLY OVERWRITE CONFIG FILES, SIMPLY RUN SS-INSTALL AGAIN ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -99,7 +98,7 @@ source /var/www/ss-dump
 ## MESSAGE ##
 echo -e "\e[36mMaking sure SS core crons + core scripts are latest versions...\e[0m"
 
-## run ss-check and ss-worker (in case SlickStack crons have not been running) ##
+## run ss-check and ss-worker (in case SimpleStack crons have not been running) ##
 source /var/www/ss-check
 source /var/www/ss-worker
 source /var/www/ss-check
@@ -121,7 +120,7 @@ SS_UPDATE_BUILD="AUG2020C"
 rm /tmp/ss-config*
 
 ## retrieve latest version of ss-config-sample ##
-wget -O /tmp/ss-config http://mirrors.slickstack.io/ss-config-sample.txt
+wget -O /tmp/ss-config https://simplestack.git.supercluster.io/ss-config-sample.txt
 
 ## ensure latest (retrieved) ss-config build matches current ss-update build ##
 SS_BUILD_LATEST=$(source /tmp/ss-config; echo $SS_BUILD)
@@ -667,7 +666,7 @@ sed -i "s|\(^OPCACHE_HUGE_CODE_PAGES=\).*|OPCACHE_HUGE_CODE_PAGES=\"$OPCACHE_HUG
 fi
 
 
-## copy over general slickstack settings ##
+## copy over general simplestack settings ##
 
 ## currently we only support wordpress so no reason to copy this over ##
 # if [[ -n "$SS_APP" ]]; then
@@ -1621,7 +1620,7 @@ chmod 6775 /var/www/html
 chmod 6775 /var/www/html/staging
 
 ## download latest (patched) WordPress version ##
-wget -O /tmp/wordpress.zip http://mirrors.slickstack.io/wordpress/wordpress.zip
+wget -O /tmp/wordpress.zip https://simplestack.git.supercluster.io/wordpress/wordpress.zip
 
 ## install WordPress to web directory ##
 cp /tmp/wordpress.zip /var/www/html
@@ -1655,7 +1654,7 @@ echo -e "\e[36mEnsuring MU plugins are the latest version...\e[0m"
 source /var/www/ss-muplugs
 
 ####################################################################################################
-#### SS-Update: Upgrade + Autoremove + Autoclean SlickStack Modules (Ubuntu Packages) ##############
+#### SS-Update: Upgrade + Autoremove + Autoclean SimpleStack Modules (Ubuntu Packages) #############
 ####################################################################################################
 
 ## the main purpose of ss-update is to upgrade all currently installed Ubuntu packages ##
@@ -1722,9 +1721,9 @@ ufw --force enable
 echo "y" | ufw enable
 
 # retrieve latest versions ##
-wget -O /tmp/ufw http://mirrors.slickstack.io/ufw-firewall/ufw.txt
-wget -O /tmp/ufw.conf http://mirrors.slickstack.io/ufw-firewall/ufw-conf.txt
-wget -O /tmp/user.rules http://mirrors.slickstack.io/ufw-firewall/user-rules.txt
+wget -O /tmp/ufw https://simplestack.git.supercluster.io/ufw-firewall/ufw.txt
+wget -O /tmp/ufw.conf https://simplestack.git.supercluster.io/ufw-firewall/ufw-conf.txt
+wget -O /tmp/user.rules https://simplestack.git.supercluster.io/ufw-firewall/user-rules.txt
 
 if [[ -z "$SSH_PORT" ]]; then 
     sed -i "s/@SSH_PORT/6969/g" /tmp/user.rules
@@ -1784,14 +1783,14 @@ source /var/www/ss-restart
 
 ## reboot server ##
 if [[ "$SS_REBOOT" == "true" ]]; then 
-    echo -e "\e[93mSlickStack updates complete! Automatic server reboot in progress... see you on the other side!\e[0m" >&2
+    echo -e "\e[93mSimpleStack updates complete! Automatic server reboot in progress... see you on the other side!\e[0m" >&2
     /bin/bash -c "/sbin/reboot"
 else 
-    echo -e "\e[36mSlickStack updates complete! Please reboot server using sudo reboot.\e[0m"
+    echo -e "\e[36mSimpleStack updates complete! Please reboot server using sudo reboot.\e[0m"
 fi
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://linux.die.net/man/8/apt-get
@@ -1828,4 +1827,4 @@ fi
 ## Ref: https://unix.stackexchange.com/questions/372733/get-output-and-return-value-of-grep-in-single-operation-in-bash
 ## Ref: https://stackoverflow.com/questions/18789907/read-values-from-configuration-file-and-use-in-shell-script
 ## Ref: https://stackoverflow.com/questions/38385963/sed-replacing-string-with-quotation-marks
-## Ref: https://github.com/littlebizzy/slickstack/issues/36
+

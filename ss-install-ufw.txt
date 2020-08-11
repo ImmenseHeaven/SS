@@ -1,9 +1,8 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-install-ufw.txt #######################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-install-ufw.txt ############################
 #### path: /var/www/ss-install-ufw #################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: Reinstalls the entire UFW Firewall module and rules (idempotent) #####################
@@ -13,14 +12,14 @@
 ## SS-CONFIG MUST BE PROPERLY CONFIGURED (AND CURRENT BUILD) BEFORE RUNNING SS-INSTALL ##
 ## ENSURE SS-CONFIG OPTIONS REMAIN CURRENT BY RUNNING SS-UPDATE OCCASIONALLY ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -118,20 +117,20 @@ sudo ufw --force disable
 ####################################################################################################
 
 # retrieve latest versions ##
-wget -O /tmp/ufw http://mirrors.slickstack.io/ufw-firewall/ufw.txt
-wget -O /tmp/ufw.conf http://mirrors.slickstack.io/ufw-firewall/ufw-conf.txt
+wget -O /tmp/ufw https://simplestack.git.supercluster.io/ufw-firewall/ufw.txt
+wget -O /tmp/ufw.conf https://simplestack.git.supercluster.io/ufw-firewall/ufw-conf.txt
 
 ## copy files to their destinations ##
 cp /tmp/ufw /etc/default/ufw
 cp /tmp/ufw.conf /etc/ufw/ufw.conf
 
 ####################################################################################################
-#### SS-Install-UFW: Configure User Rules (Default Rules For SlickStack) ###########################
+#### SS-Install-UFW: Configure User Rules (Default Rules For SimpleStack) ##########################
 ####################################################################################################
 
 # retrieve latest versions ##
-wget -O /tmp/user.rules http://mirrors.slickstack.io/ufw-firewall/user-rules.txt
-wget -O /tmp/user6.rules http://mirrors.slickstack.io/ufw-firewall/user6-rules.txt
+wget -O /tmp/user.rules https://simplestack.git.supercluster.io/ufw-firewall/user-rules.txt
+wget -O /tmp/user6.rules https://simplestack.git.supercluster.io/ufw-firewall/user6-rules.txt
 
 if [[ -z "$SSH_PORT" ]]; then 
     sed -i "s/@SSH_PORT/6969/g" /tmp/user.rules
@@ -167,7 +166,7 @@ rm /tmp/ufw*
 rm /tmp/user*
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://linux.die.net/man/8/apt-get

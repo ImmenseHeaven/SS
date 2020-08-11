@@ -1,9 +1,9 @@
 locale: en-US
 encoding: UTF-8
-url: http://mirrors.slickstack.io
-repository: littlebizzy/slickstack
-title: SlickStack
-description: SlickStack is a free LEMP stack automation script written in Bash designed to enhance and simplify WordPress provisioning, performance, and security.
+url: https://simplestack.git.supercluster.io
+repository: ImmenseHeaven/SimpleStack
+title: SimpleStack
+description: SimpleStack is a free LEMP stack automation script written in Bash designed to enhance and simplify WordPress provisioning, performance, and security.
 plugins:
   - jekyll-redirect-from
   - jekyll-seo-tag

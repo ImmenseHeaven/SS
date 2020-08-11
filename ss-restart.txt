@@ -1,26 +1,25 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-restart.txt ###########################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-restart.txt ################################
 #### path: /var/www/ss-restart #####################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Restarts all of the SlickStack LEMP module services (e.g. Ubuntu packages) ###########
+#### purpose: Restarts all of the SimpleStack LEMP module services (e.g. Ubuntu packages) ##########
 #### module version: Ubuntu 20.04 LTS ##############################################################
 ####################################################################################################
 
-## YOU CAN RUN SS-RESTART FOR AN EASY WAY TO RESTART ALL CORE SLICKSTACK (LEMP) MODULES ##
+## YOU CAN RUN SS-RESTART FOR AN EASY WAY TO RESTART ALL CORE SIMPLESTACK (LEMP) MODULES ##
 ## THIS DOES NOT INCLUDE ANY CUSTOM UBUNTU PACKAGES THAT YOU MAY HAVE INSTALLED ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -83,7 +82,7 @@ function ln {
 }
 
 ####################################################################################################
-#### SS-Restart: Forcefully Restart SlickStack LEMP Modules (Systemd Services) #####################
+#### SS-Restart: Forcefully Restart SimpleStack LEMP Modules (Systemd Services) ####################
 ####################################################################################################
 
 ## this script is using init.d instead of systemd shortcuts to allow for absolute paths ##
@@ -102,7 +101,7 @@ function ln {
 /etc/init.d/ufw restart
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://unix.stackexchange.com/questions/370942/do-you-need-to-reload-after-adding-a-rule-in-ufw/370947

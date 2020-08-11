@@ -2,11 +2,11 @@
 
 /*
 Plugin Name: Autoloader
-Plugin URI: https://www.littlebizzy.com/plugins/autoloader
+Plugin URI: https://www.supercluster.io
 Description: Enables standard WordPress plugins contained in a folder to be placed in the mu-plugins directory and loaded prior to others (forked from Bedrock).
 Version: 1.2.1
-Author: LittleBizzy
-Author URI: https://www.littlebizzy.com
+Author: SuperCluster
+Author URI: https://www.supercluster.io
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Prefix: ATOLDR
@@ -15,7 +15,7 @@ Prefix: ATOLDR
 declare(strict_types=1);
 
 // Plugin namespace
-namespace LittleBizzy\Autoloader;
+namespace SuperCluster\Autoloader;
 
 // Exit if accessed directly
 if( ! defined( 'ABSPATH' ) )
@@ -120,7 +120,7 @@ class Autoloader {
 	 */
 	private function checkCache(): void {
 
-		$cache = get_site_option('littlebizzy_autoloader');
+		$cache = get_site_option('supercluster_autoloader');
 		if ($cache === false) {
 			$this->updateCache();
 			return;
@@ -145,7 +145,7 @@ class Autoloader {
 		self::$activated    = ($rebuild) ? $plugins : array_diff(array_keys($plugins), self::$cache['plugins']);
 		self::$cache        = array('plugins' => array_keys($plugins), 'count' => $this->countPlugins(false));
 
-		update_site_option('littlebizzy_autoloader', self::$cache);
+		update_site_option('supercluster_autoloader', self::$cache);
 	}
 
 	/**

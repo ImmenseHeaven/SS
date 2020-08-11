@@ -1,23 +1,22 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-dos2unix.txt ##########################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-dos2unix.txt ###############################
 #### path: /var/www/ss-dos2unix ####################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Converts all files in SlickStack root (esp. DOS files) to the Unix file format #######
+#### purpose: Converts all files in SimpleStack root (esp. DOS files) to the Unix file format ######
 #### module version: Ubuntu 20.04 LTS ##############################################################
 ####################################################################################################
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -87,7 +86,7 @@ function ln {
 find /var/www/html/ -type f -exec dos2unix -k -o -s {} \;
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref:

@@ -1,10 +1,9 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ubuntu/bash-aliases.txt ##################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ubuntu/bash-aliases.txt #######################
 #### path: /var/www/meta/.bash-aliases #############################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Bash aliases configuration file for SlickStack [ss] command + WP-CLI includes ########
+#### purpose: Bash aliases configuration file for SimpleStack [ss] command + WP-CLI includes #######
 #### module version: Ubuntu 20.04 LTS ##############################################################
 ####################################################################################################
 
@@ -13,12 +12,12 @@
 # EDITOR="vim"
 
 ####################################################################################################
-#### Bash Aliases: SlickStack Bash Shortcut Commands Settings ######################################
+#### Bash Aliases: SimpleStack Bash Shortcut Commands Settings #####################################
 ####################################################################################################
 
 # alias sscheck="sudo bash /var/www/ss-check"
 
-## SlickStack aliases (e.g. 'ss check' will run 'sudo bash /var/www/ss-check') ##
+## SimpleStack aliases (e.g. 'ss check' will run 'sudo bash /var/www/ss-check') ##
 function ss { 
   sudo bash /var/www/ss-"$@"; 
 }
@@ -42,7 +41,7 @@ WP_CLI_STRICT_ARGS_MODE="false"
 source /var/www/meta/.wp-completion
 
 ####################################################################################################
-#### External References Used By SlickStack To Improve This Script (Thanks, Interwebz) #############
+#### External References Used By SimpleStack To Improve This Script (Thanks, Interwebz) ############
 ####################################################################################################
 
 ## Ref: https://linuxize.com/post/bash-functions/

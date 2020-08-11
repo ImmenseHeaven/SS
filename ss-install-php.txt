@@ -1,26 +1,25 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-install-php.txt #######################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-install-php.txt ############################
 #### path: /var/www/ss-install-php #################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Reinstalls the entire PHP-FPM module for SlickStack servers (idempotent) #############
+#### purpose: Reinstalls the entire PHP-FPM module for SimpleStack servers (idempotent) ############
 #### module version: Ubuntu 20.04 LTS + PHP-FPM 7.4.x ##############################################
 ####################################################################################################
 
 ## SS-CONFIG MUST BE PROPERLY CONFIGURED (AND CURRENT BUILD) BEFORE RUNNING SS-INSTALL ##
 ## ENSURE SS-CONFIG OPTIONS REMAIN CURRENT BY RUNNING SS-UPDATE OCCASIONALLY ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -135,9 +134,9 @@ rm /tmp/php-ini*
 rm /tmp/www*
 
 ## download latest versions ##
-wget -O /tmp/php-fpm.conf http://mirrors.slickstack.io/php-fpm/php-fpm-conf.txt
-wget -O /tmp/php.ini http://mirrors.slickstack.io/php-fpm/php-ini.txt
-wget -O /tmp/www.conf http://mirrors.slickstack.io/php-fpm/www-conf.txt
+wget -O /tmp/php-fpm.conf https://simplestack.git.supercluster.io/php-fpm/php-fpm-conf.txt
+wget -O /tmp/php.ini https://simplestack.git.supercluster.io/php-fpm/php-ini.txt
+wget -O /tmp/www.conf https://simplestack.git.supercluster.io/php-fpm/www-conf.txt
 
 #################
 #### PHP.ini ####
@@ -486,7 +485,7 @@ rm /tmp/php-ini*
 rm /tmp/www*
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref:

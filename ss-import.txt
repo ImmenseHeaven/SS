@@ -1,23 +1,22 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-import.txt ############################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-import.txt #################################
 #### path: /var/www/ss-import ######################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: Imports and overwrites import.sql and import.zip (tar, tar.gz) on demand only ########
 #### module version: Ubuntu 20.04 LTS + MySQL 8.0.x ################################################
 ####################################################################################################
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -120,8 +119,7 @@ export MYSQL_PWD=$DB_PASSWORD_ROOT
 # tar -xzf /var/www/meta/migrate.tar.gz
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
-## Ref: https://github.com/littlebizzy/slickstack/blob/master/ss-dump.txt
 ## Ref: https://collegetimes.co/lemp-server/

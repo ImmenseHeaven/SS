@@ -1,7 +1,6 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/mysql/my-cnf.txt #########################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/mysql/my-cnf.txt ##############################
 #### path: n/a (boilerplate) #######################################################################
 #### destination: /etc/mysql/my.cnf (after install) ################################################
 #### purpose: MySQL configuration file boilerplate (symlink to /etc/alternatives/my.cnf) ###########
@@ -122,7 +121,7 @@ max_allowed_packet      = 16M
 # !includedir /etc/mysql/mysql.conf.d/
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://dev.mysql.com/doc/mysql/en/server-system-variables.html

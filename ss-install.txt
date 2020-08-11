@@ -1,26 +1,25 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-install.txt ###########################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-install.txt ################################
 #### path: /var/www/ss-install #####################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Reinstalls the entire SlickStack server and all LEMP modules, etc (idempotent) #######
+#### purpose: Reinstalls the entire SimpleStack server and all LEMP modules, etc (idempotent) ######
 #### module version: Ubuntu 20.04 LTS ##############################################################
 ####################################################################################################
 
 ## SS-CONFIG MUST BE PROPERLY CONFIGURED (AND CURRENT BUILD) BEFORE RUNNING SS-INSTALL ##
 ## ENSURE SS-CONFIG OPTIONS REMAIN CURRENT BY RUNNING SS-UPDATE OCCASIONALLY ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -87,11 +86,11 @@ function ln {
 ####################################################################################################
 
 ## NEVER RUN SS-INSTALL UNLESS BUILD VERSION BELOW MATCHES CURRENT SS-CONFIG BOILERPLATE ##
-## IN CASE OF EMERGENCY CONFLICTS THE SLICKSTACK TEAM MIGHT MISMATCH SAID BUILDS ##
+## IN CASE OF EMERGENCY CONFLICTS THE SIMPLESTACK TEAM MIGHT MISMATCH SAID BUILDS ##
 
 ## ensure correct Ubuntu version is installed ##
 if [[ "${UBUNTU_VERSION}" != "20.04" ]]; then
-    echo -e "\e[93mSlickStack is designed for Ubuntu 20.04, but this server is running Ubuntu ${UBUNTU_VERSION}.\e[0m" >&2
+    echo -e "\e[93mSimpleStack is designed for Ubuntu 20.04, but this server is running Ubuntu ${UBUNTU_VERSION}.\e[0m" >&2
     exit 1
 fi
 
@@ -108,7 +107,7 @@ fi
 source /var/www/ss-dump
 
 ####################################################################################################
-#### SS-Install: Configure Ubuntu (SlickStack) Users + Set Various System Defaults #################
+#### SS-Install: Configure Ubuntu (SimpleStack) Users + Set Various System Defaults ################
 ####################################################################################################
 
 ## TEMP ##
@@ -143,14 +142,14 @@ else
 fi
 
 ####################################################################################################
-#### SS-Install: Download Latest SlickStack Core Scripts + Cron Jobs (Via SS-Check) ################
+#### SS-Install: Download Latest SimpleStack Core Scripts + Cron Jobs (Via SS-Check) ###############
 ####################################################################################################
 
 ## MESSAGE ##
-echo -e "\e[36mRetrieving latest SlickStack files and copying them to local server...\e[0m"
+echo -e "\e[36mRetrieving latest SimpleStack files and copying them to local server...\e[0m"
 
 ## download latest versions ##
-wget -O /tmp/ss-check http://mirrors.slickstack.io/ss-check.txt
+wget -O /tmp/ss-check https://simplestack.git.supercluster.io/ss-check.txt
 
 ## copy files to their destinations ##
 cp /tmp/ss-check /var/www/ss-check
@@ -170,7 +169,7 @@ source /var/www/ss-check
 echo -e "\e[36mConfiguring the Sudoers file (root and sudo users)...\e[0m"
 
 ## download latest versions ##
-wget -O /tmp/sudoers http://mirrors.slickstack.io/ubuntu/sudoers.txt
+wget -O /tmp/sudoers https://simplestack.git.supercluster.io/ubuntu/sudoers.txt
 
 ## replace variables ##
 sed -i "s/@SUDO_USER/${SUDO_USER}/g" /tmp/sudoers
@@ -190,7 +189,7 @@ chmod 0440 /etc/sudoers
 echo -e "\e[36mConfiguring SSH (SFTP) settings, user permissions, and port number...\e[0m"
 
 ## download latest versions ##
-wget -O /tmp/sshd_config http://mirrors.slickstack.io/ubuntu/sshd-config.txt
+wget -O /tmp/sshd_config https://simplestack.git.supercluster.io/ubuntu/sshd-config.txt
 
 ## replace variables ##
 sed -i "s/@SUDO_USER/${SUDO_USER}/g" /tmp/sshd_config
@@ -244,11 +243,11 @@ chmod 0664 /var/www/meta/.ssh/authorized_keys ## should be 0664 as per Ubuntu do
 /etc/init.d/ssh restart
 
 ####################################################################################################
-#### SS-Install: Install SlickStack (Ubuntu) Root Crontab File #####################################
+#### SS-Install: Install SimpleStack (Ubuntu) Root Crontab File ####################################
 ####################################################################################################
 
 ## MESSAGE ##
-echo -e "\e[36mInstalling the SlickStack crontab file to Ubuntu root user crontab...\e[0m"
+echo -e "\e[36mInstalling the SimpleStack crontab file to Ubuntu root user crontab...\e[0m"
 
 ## install crontab ##
 crontab /var/www/00-crontab
@@ -261,7 +260,7 @@ chmod 0600 /var/spool/cron/crontabs/root
 /etc/init.d/cron reload
 
 ####################################################################################################
-#### SlickStack: Set Dpkg Basic Settings + Update Apt (Package) Cache ##############################
+#### SimpleStack: Set Dpkg Basic Settings + Update Apt (Package) Cache #############################
 ####################################################################################################
 
 ## MESSAGE ##
@@ -274,11 +273,11 @@ DEBIAN_FRONTEND=noninteractive dpkg --configure -a --force-confold
 apt update
 
 ####################################################################################################
-#### SlickStack: Install Various Modules Via Default Ubuntu Packages ###############################
+#### SimpleStack: Install Various Modules Via Default Ubuntu Packages ##############################
 ####################################################################################################
 
 ## MESSAGE ##
-echo -e "\e[36mInstalling various SlickStack modules from most recent Ubuntu repos...\e[0m"
+echo -e "\e[36mInstalling various SimpleStack modules from most recent Ubuntu repos...\e[0m"
 
 ## upgrade installed Ubuntu packages (LEMP modules) + Linux kernel (apt feature) ##
 apt full-upgrade
@@ -314,14 +313,14 @@ apt install certbot python3-certbot-nginx
 source /var/www/ss-install-php
 
 ####################################################################################################
-#### SS-Install: Install WP-CLI Bash Aliases [wp] + SlickStack Bash Aliases [ss] ###################
+#### SS-Install: Install WP-CLI Bash Aliases [wp] + SimpleStack Bash Aliases [ss] ##################
 ####################################################################################################
 
 ## run ss-install-bash ##
 source /var/www/ss-install-bash
 
 ####################################################################################################
-#### SlickStack: Install Nginx Server + FastCGI Cache + OpenSSL ####################################
+#### SimpleStack: Install Nginx Server + FastCGI Cache + OpenSSL ###################################
 ####################################################################################################
 
 ## run ss-install-nginx ##
@@ -342,17 +341,17 @@ source /var/www/ss-encrypt
 source /var/www/ss-install-mysql
  
 ####################################################################################################
-#### SlickStack: Install WordPress (Prod) + Configure WP-Config File (Prod + Staging) ##############
+#### SimpleStack: Install WordPress (Prod) + Configure WP-Config File (Prod + Staging) #############
 ####################################################################################################
 
-## this script fetches the latest stable version of WordPress from SlickStack mirrors ##
+## this script fetches the latest stable version of WordPress from SimpleStack mirrors ##
 ## major releases (unpatched) are never considered stable for our purposes ##
 
 ## run ss-install-wordpress ##
 source /var/www/ss-install-wordpress
 
 ####################################################################################################
-#### SlickStack: Install Redis Server + PHP-Redis Extension ########################################
+#### SimpleStack: Install Redis Server + PHP-Redis Extension #######################################
 ####################################################################################################
 
 ## run ss-install-redis ##
@@ -390,7 +389,7 @@ rm /tmp/sysctl*
 cp /etc/sysctl.conf /etc/sysctl.conf.bak
 
 ## download latest versions ##
-wget -O /tmp/sysctl.conf http://mirrors.slickstack.io/ubuntu/sysctl.txt
+wget -O /tmp/sysctl.conf https://simplestack.git.supercluster.io/ubuntu/sysctl.txt
 
 ## copy files to their destinations ##
 cp /tmp/sysctl.conf /etc/sysctl.conf
@@ -406,7 +405,7 @@ chmod 0664 /etc/sysctl.conf
 source /var/www/ss-install-ufw
 
 ####################################################################################################
-#### SlickStack: Finish Up Installation + Confirmation Message #####################################
+#### SimpleStack: Finish Up Installation + Confirmation Message ####################################
 ####################################################################################################
 
 ## not a virgin install anymore ##
@@ -427,10 +426,10 @@ cat /dev/null > /var/www/logs/redis.log
 source /var/www/ss-restart
 
 ## confirm installation complete ##
-echo -e "\e[36mSlickStack installation complete! Please reboot server and ensure CloudFlare is activated with Full SSL mode.\e[0m"
+echo -e "\e[36mSimpleStack installation complete! Please reboot server and ensure CloudFlare is activated with Full SSL mode.\e[0m"
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: http://wproller.com ##

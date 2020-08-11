@@ -1,12 +1,11 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-config-sample.txt #####################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-config-sample.txt ##########################
 #### path: /var/www/ss-config-sample (for reference only) ##########################################
 #### destination: /var/www/ss-config (manual configuration currently required) #####################
-#### purpose: SlickStack configuration file (must be configured before running ss-install) #########
+#### purpose: SimpleStack configuration file (must be configured before running ss-install) ########
 #### module version: Ubuntu 20.04 LTS ##############################################################
 ####################################################################################################
 
@@ -14,10 +13,10 @@
 ## AFTER CHANGING ANY SS-CONFIG SETTINGS BELOW YOU MUST RUN SS-INSTALL AGAIN ##
 
 ####################################################################################################
-#### SlickStack: SS-Config Build Version (Checked By SS-Install To Verify Freshness) ###############
+#### SimpleStack: SS-Config Build Version (Checked By SS-Install To Verify Freshness) ##############
 ####################################################################################################
 
-## rebuild ss-config if outdated errors: http://mirrors.slickstack.io/ss-config-sample.txt ##
+## rebuild ss-config if outdated errors: https://simplestack.git.supercluster.io/ss-config-sample.txt ##
 ## copy and paste entire ss-config boilerplate before modifying variables ##
 
 ## SINCE SS_BUILD JULY2020B MYSQL 8.0 IS NOT INSTALLING PROPERLY (PLEASE INSTALL MANUALLY) ##
@@ -154,7 +153,7 @@ CLOUDFLARE_WIDGET_DNS="true"
 ## MODULE VERSION: 
 
 ## not to be confused with the ss-dump script which creates a temporary local archive ##
-## remote backups (ss-backup) push your SlickStack files to a remote server ##
+## remote backups (ss-backup) push your SimpleStack files to a remote server ##
 
 ## BACKUP_SERVICE = [dropbox|backblaze|etc]
 ## BACKUP_API_KEY
@@ -165,7 +164,7 @@ CLOUDFLARE_WIDGET_DNS="true"
 ####################################################################################################
 ####################################################################################################
 ####################################################################################################
-######## ADVANCED SETTINGS BELOW (MOST SLICKSTACK SERVERS SHOULD NOT CHANGE THESE) #################
+######## ADVANCED SETTINGS BELOW (MOST SIMPLESTACK SERVERS SHOULD NOT CHANGE THESE) ################
 ####################################################################################################
 ####################################################################################################
 ####################################################################################################
@@ -194,7 +193,7 @@ CLOUDFLARE_WIDGET_DNS="true"
 
 ## MODULE VERSION: WordPress 5.4.x
 
-## WP_CRON_METHOD = [auto|wordpress|server] auto lets SlickStack decide WP-Cron method ##
+## WP_CRON_METHOD = [auto|wordpress|server] auto lets SimpleStack decide WP-Cron method ##
 
 # WP_CRON_METHOD="auto"
 
@@ -434,7 +433,7 @@ PHP_DEFAULT_SOCKET_TIMEOUT="60"
 
 ## MODULE VERSION: PHP-FPM 7.4.x
 
-## the vast majority of SlickStack servers should not need to adjust any FPM settings ##
+## the vast majority of SimpleStack servers should not need to adjust any FPM settings ##
 ## in most cases the php.ini settings and www.conf settings are more relevant ##
 
 ## FPM_EMERGENCY_RESTART_THRESHOLD = [10|15|30|etc] keep enabled with reasonable value ##
@@ -516,13 +515,13 @@ OPCACHE_HUGE_CODE_PAGES="false"
 # etc with new 7.4 options
 
 ####################################################################################################
-#### SS-Config: General SlickStack Settings + Config Files Sources #################################
+#### SS-Config: General SimpleStack Settings + Config Files Sources ################################
 ####################################################################################################
 
 ## MODULE VERSION: Ubuntu 20.04 LTS
 
 ## SS_APP = [wordpress] only WordPress currently supported (feedback? tell us!) ##
-## SS_MU_PLUGINS = [default|custom] use default LittleBizzy MU plugins or custom ones ##
+## SS_MU_PLUGINS = [default|custom] use default MU plugins or custom ones ##
 ## SS_TIMEZONE = [UTC|Greenwich|etc] almost nobody should have a reason to not use UTC ##
 ## SS_REBOOT = [false|true] server will reboot automatically after ss-update runs ##
 
@@ -539,17 +538,17 @@ SS_MU_PLUGINS="default"
 ## for custom configuration use the below settings to define configuration file sources ##
 ## source files must be publicly accessible via wget over either HTTP or HTTPS ##
 
-PLUGIN_BLACKLIST_SOURCE="http://mirrors.slickstack.io/wordpress/blacklist.txt"
-CUSTOM_FUNCTIONS_SOURCE="http://mirrors.slickstack.io/wordpress/functions.txt"
-THROWAWAY_THEME_SOURCE="http://mirrors.slickstack.io/wordpress/throwaway.zip"
+PLUGIN_BLACKLIST_SOURCE="https://simplestack.git.supercluster.io/wordpress/blacklist.txt"
+CUSTOM_FUNCTIONS_SOURCE="https://simplestack.git.supercluster.io/wordpress/functions.txt"
+THROWAWAY_THEME_SOURCE="https://simplestack.git.supercluster.io/wordpress/throwaway.zip"
 
 ####################################################################################################
-#### SS-Config: SlickStack Core Cron Job Schedules (Interval Settings) #############################
+#### SS-Config: SimpleStack Core Cron Job Schedules (Interval Settings) ############################
 ####################################################################################################
 
 ## MODULE VERSION: Ubuntu 20.04 LTS
 
-## modifying the below SlickStack intervals could affect server stability and updates ##
+## modifying the below SimpleStack intervals could affect server stability and updates ##
 ## disable any given cron job by setting interval to random string e.g. never ##
 
 ## [often|regular|quarter-hourly|half-hourly|hourly|quarter-daily|half-daily|daily|half-weekly|weekly|half-monthly|monthly|sometimes] ##
@@ -593,73 +592,73 @@ SS_INTERVAL_WORKER="regular"
 ## activate this custom list of MU (Must-Use) plugins using the SS_MU_PLUGINS variable ##
 ## NOTE: Autoloader, Custom Functions, Object Cache, and XXX Notices are required ##
 
-MU_PLUGIN_01_SOURCE="http://mirrors.slickstack.io/mu-plugins/clear-caches.zip"
+MU_PLUGIN_01_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/clear-caches.zip"
 MU_PLUGIN_01_DIR="clear-caches"
 
-MU_PLUGIN_02_SOURCE="http://mirrors.slickstack.io/mu-plugins/cloudflare.zip"
+MU_PLUGIN_02_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/cloudflare.zip"
 MU_PLUGIN_02_DIR="cloudflare"
 
-MU_PLUGIN_03_SOURCE="http://mirrors.slickstack.io/mu-plugins/dashboard-cleanup.zip"
+MU_PLUGIN_03_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/dashboard-cleanup.zip"
 MU_PLUGIN_03_DIR="dashboard-cleanup"
 
-MU_PLUGIN_04_SOURCE="http://mirrors.slickstack.io/mu-plugins/delete-expired-transients.zip"
+MU_PLUGIN_04_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/delete-expired-transients.zip"
 MU_PLUGIN_04_DIR="delete-expired-transients"
 
-MU_PLUGIN_05_SOURCE="http://mirrors.slickstack.io/mu-plugins/disable-attachment-pages.zip"
+MU_PLUGIN_05_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/disable-attachment-pages.zip"
 MU_PLUGIN_05_DIR="disable-attachment-pages"
 
-MU_PLUGIN_06_SOURCE="http://mirrors.slickstack.io/mu-plugins/disable-embeds.zip"
+MU_PLUGIN_06_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/disable-embeds.zip"
 MU_PLUGIN_06_DIR="disable-embeds"
 
-MU_PLUGIN_07_SOURCE="http://mirrors.slickstack.io/mu-plugins/disable-emojis.zip"
+MU_PLUGIN_07_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/disable-emojis.zip"
 MU_PLUGIN_07_DIR="disable-emojis"
 
-MU_PLUGIN_08_SOURCE="http://mirrors.slickstack.io/mu-plugins/disable-empty-trash.zip"
+MU_PLUGIN_08_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/disable-empty-trash.zip"
 MU_PLUGIN_08_DIR="disable-empty-trash"
 
-MU_PLUGIN_09_SOURCE="http://mirrors.slickstack.io/mu-plugins/disable-gutenberg.zip"
+MU_PLUGIN_09_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/disable-gutenberg.zip"
 MU_PLUGIN_09_DIR="disable-gutenberg"
 
-MU_PLUGIN_10_SOURCE="http://mirrors.slickstack.io/mu-plugins/disable-image-compression.zip"
+MU_PLUGIN_10_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/disable-image-compression.zip"
 MU_PLUGIN_10_DIR="disable-image-compression"
 
-MU_PLUGIN_11_SOURCE="http://mirrors.slickstack.io/mu-plugins/disable-post-via-email.zip"
+MU_PLUGIN_11_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/disable-post-via-email.zip"
 MU_PLUGIN_11_DIR="disable-post-via-email"
 
-MU_PLUGIN_12_SOURCE="http://mirrors.slickstack.io/mu-plugins/disable-xml-rpc.zip"
+MU_PLUGIN_12_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/disable-xml-rpc.zip"
 MU_PLUGIN_12_DIR="disable-xml-rpc"
 
-MU_PLUGIN_13_SOURCE="http://mirrors.slickstack.io/mu-plugins/error-log-monitor.zip"
+MU_PLUGIN_13_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/error-log-monitor.zip"
 MU_PLUGIN_13_DIR="error-log-monitor"
 
-MU_PLUGIN_14_SOURCE="http://mirrors.slickstack.io/mu-plugins/force-https.zip"
+MU_PLUGIN_14_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/force-https.zip"
 MU_PLUGIN_14_DIR="force-https"
 
-MU_PLUGIN_15_SOURCE="http://mirrors.slickstack.io/mu-plugins/force-strong-hashing.zip"
+MU_PLUGIN_15_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/force-strong-hashing.zip"
 MU_PLUGIN_15_DIR="force-strong-hashing"
 
-MU_PLUGIN_16_SOURCE="http://mirrors.slickstack.io/mu-plugins/header-cleanup.zip"
+MU_PLUGIN_16_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/header-cleanup.zip"
 MU_PLUGIN_16_DIR="header-cleanup"
 
-MU_PLUGIN_17_SOURCE="http://mirrors.slickstack.io/mu-plugins/limit-heartbeat.zip"
+MU_PLUGIN_17_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/limit-heartbeat.zip"
 MU_PLUGIN_17_DIR="limit-heartbeat"
 
-MU_PLUGIN_18_SOURCE="http://mirrors.slickstack.io/mu-plugins/maintenance-mode.zip"
+MU_PLUGIN_18_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/maintenance-mode.zip"
 MU_PLUGIN_18_DIR="maintenance-mode"
 
-MU_PLUGIN_19_SOURCE="http://mirrors.slickstack.io/mu-plugins/minify-html.zip"
+MU_PLUGIN_19_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/minify-html.zip"
 MU_PLUGIN_19_DIR="minify-html"
 
-MU_PLUGIN_20_SOURCE="http://mirrors.slickstack.io/mu-plugins/plugin-blacklist.zip"
+MU_PLUGIN_20_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/plugin-blacklist.zip"
 MU_PLUGIN_20_DIR="plugin-blacklist"
 
-MU_PLUGIN_21_SOURCE="http://mirrors.slickstack.io/mu-plugins/server-status.zip"
+MU_PLUGIN_21_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/server-status.zip"
 MU_PLUGIN_21_DIR="server-status"
 
-MU_PLUGIN_22_SOURCE="http://mirrors.slickstack.io/mu-plugins/sftp-details.zip"
+MU_PLUGIN_22_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/sftp-details.zip"
 MU_PLUGIN_22_DIR="sftp-details"
 
-MU_PLUGIN_23_SOURCE="http://mirrors.slickstack.io/mu-plugins/virtual-robotstxt.zip"
+MU_PLUGIN_23_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/virtual-robotstxt.zip"
 MU_PLUGIN_23_DIR="virtual-robotstxt"
 
 ####################################################################################################
@@ -671,9 +670,9 @@ MU_PLUGIN_23_DIR="virtual-robotstxt"
 ## these plugins will be added to your WP website whenever ss-install or ss-update runs ##
 ## the activation status of these plugins will not be effected or modified (ever) ##
 
-# PLUGIN_01_SOURCE="http://mirrors.slickstack.io/mu-plugins/clear-caches.zip"
+# PLUGIN_01_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/clear-caches.zip"
 # PLUGIN_01_DIR="clear-caches"
-# PLUGIN_02_SOURCE="http://mirrors.slickstack.io/mu-plugins/cloudflare.zip"
+# PLUGIN_02_SOURCE="https://simplestack.git.supercluster.io/mu-plugins/cloudflare.zip"
 # PLUGIN_02_DIR="cloudflare"
 
 ####################################################################################################

@@ -1,7 +1,6 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ubuntu/gai-conf.txt ######################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ubuntu/gai-conf.txt ###########################
 #### path: /etc/gai.conf ###########################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: GAI configuration file that prefers IPv4 over IPv6 for better performance ############
@@ -34,7 +33,7 @@ precedence ::ffff:0:0/96  100
 #scopev4 ::ffff:0.0.0.0/96       14
 
 ####################################################################################################
-#### External References Used By SlickStack To Improve This Script (Thanks, Interwebz) #############
+#### External References Used By SimpleStack To Improve This Script (Thanks, Interwebz) ############
 ####################################################################################################
 
 ## Ref: 

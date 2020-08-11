@@ -1,26 +1,25 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-scan.txt ##############################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-scan.txt ###################################
 #### path: /var/www/ss-scan ########################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
-#### purpose: Scans the entire SlickStack directory tree (only) for malware using ClamAV ###########
+#### purpose: Scans the entire SimpleStack directory tree (only) for malware using ClamAV ##########
 #### module version: Ubuntu 20.04 LTS + ClamAV 0.101.x #############################################
 ####################################################################################################
 
 ## SS-SCAN ONLY SCANS AND LOGS COMMON LINUX MALWARE FOUND TO: /var/www/logs/clamav.log ##
 ## USE SS-CLEAN TO DELETE GENERAL JUNK FILES OR SS-OPTIMIZE TO IMPROVE DATABASE ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -83,7 +82,7 @@ function ln {
 }
 
 ####################################################################################################
-#### SS-Scan: Scan SlickStack Directory Tree For Malware (Via ClamAV) ##############################
+#### SS-Scan: Scan SimpleStack Directory Tree For Malware (Via ClamAV) #############################
 ####################################################################################################
 
 ## on average the ClamAV scanning process takes around 5-10 minutes on typical servers ##
@@ -95,11 +94,11 @@ if [[ ! -f "/var/www/logs/clamav.log" ]]; then
     chown clamav:clamav /var/www/logs/clamav.log
 fi
 
-## scan SlickStack directory tree (only) for common malware ##
+## scan SimpleStack directory tree (only) for common malware ##
 clamscan -ir /var/www -l /var/www/logs/clamav.log
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: 

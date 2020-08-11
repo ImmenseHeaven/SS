@@ -1,23 +1,22 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-install-clamav.txt ####################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-install-clamav.txt #########################
 #### path: /var/www/ss-install-clamav ##############################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: Reinstalls the ClamAV module and configures basic settings (idempotent) ##############
 #### module version: Ubuntu 20.04 LTS + ClamAV 0.102.x #############################################
 ####################################################################################################
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -95,7 +94,7 @@ sed -i '/Checks/c\Checks 2' /etc/clamav/freshclam.conf
 sed -i '/MaxAttempts/c\MaxAttempts 3' /etc/clamav/freshclam.conf
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref:

@@ -1,9 +1,8 @@
 #!/bin/bash
 
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/ss-sync.txt ##############################################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/ss-sync.txt ###################################
 #### path: /var/www/ss-sync ########################################################################
 #### destination: n/a (not a boilerplate) ##########################################################
 #### purpose: Syncs relevant files and database from production site to the staging site ###########
@@ -13,14 +12,14 @@
 ## SS-SYNC DUPLICATES ALL RELEVANT FILES FROM PRODUCTION TO STAGING (BUT NOT UPLOADS) ##
 ## STAGING SITES WILL MIRROR (NGINX ALIAS) ALL MEDIA UPLOADS FROM PRODUCTION ##
 
-## include SlickStack configuration ##
+## include SimpleStack configuration ##
 source /var/www/ss-config
 
 ####################################################################################################
-#### SlickStack: Critical Bash Functions (Aliases) For This Script To Work #########################
+#### SimpleStack: Critical Bash Functions (Aliases) For This Script To Work ########################
 ####################################################################################################
 
-## the below functions are hardcoded into every SlickStack script to ensure reliability ##
+## the below functions are hardcoded into every SimpleStack script to ensure reliability ##
 ## this also speeds up processing times by avoiding repeated inline commands ##
 
 ## variables ##
@@ -268,7 +267,7 @@ rm /tmp/staging*.sql*
 ## MODULE VERSION: WP-Config Build #
 
 ## retrieve latest wp-config boilerplate ##
-wget -O /var/www/html/staging/wp-config.php http://mirrors.slickstack.io/wordpress/wp-config-staging.txt
+wget -O /var/www/html/staging/wp-config.php https://simplestack.git.supercluster.io/wordpress/wp-config-staging.txt
 
 ###### WP Multisite settings ########
 
@@ -427,7 +426,7 @@ source /var/www/ss-muplugs
 source /var/www/ss-perms
 
 ####################################################################################################
-#### SlickStack: External References Used To Improve This Script (Thanks, Interwebz) ###############
+#### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############
 ####################################################################################################
 
 ## Ref: https://community.centminmod.com/threads/wp-engine-type-production-staging-file-and-db-sync.19720/

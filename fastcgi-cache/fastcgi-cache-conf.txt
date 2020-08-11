@@ -1,10 +1,9 @@
 ####################################################################################################
-#### author: SlickStack ############################################################################
-#### link: https://slickstack.io ###################################################################
-#### mirror: http://mirrors.slickstack.io/fastcgi-cache/fastcgi-cache-conf.txt #####################
+#### author: SimpleStack ###########################################################################
+#### mirror: https://simplestack.git.supercluster.io/fastcgi-cache/fastcgi-cache-conf.txt ##########
 #### path: n/a (boilerplate) #######################################################################
 #### destination: /etc/nginx/conf.d/fastcgi-cache.conf (after install) #############################
-#### purpose: FastCGI Cache (Nginx module) configuration file optimized for SlickStack #############
+#### purpose: FastCGI Cache (Nginx module) configuration file optimized for SimpleStack ############
 #### module version: Nginx 1.15+ ###################################################################
 ####################################################################################################
 
@@ -25,7 +24,7 @@
     add_header X-FastCGI-Cache $upstream_cache_status;
 
 ####################################################################################################
-#### External References Used By SlickStack To Improve This Script #################################
+#### External References Used By SimpleStack To Improve This Script ################################
 ####################################################################################################
 
 ## Ref: https://github.com/A5hleyRich/wordpress-nginx/blob/master/global/server/fastcgi-cache.conf
