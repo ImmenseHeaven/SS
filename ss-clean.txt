@@ -94,6 +94,15 @@ cat /dev/null > /home/${SUDO_USER}/.bash_history
 cat /dev/null > /home/${SFTP_USER}/.bash_history
 
 ####################################################################################################
+#### SS-Clean: Delete Staging Site Completely If Explicity Disabled In SS-Config ###################
+####################################################################################################
+
+## only if STAGING_SITE explicity false in ss-config ##
+if [[ "$STAGING_SITE" == "false" ]]; then
+    rm /var/www/html/staging*
+fi
+
+####################################################################################################
 #### SS-Clean: Delete Outdated + Unnecessary SimpleStack Files #####################################
 ####################################################################################################
 
@@ -591,8 +600,8 @@ rm /var/www/html/wp-content/plugins/login-lockdown* ## excessive logging
 rm /var/www/html/wp-content/plugins/dreamhost-panel-login* ## vendor-specific
 rm /var/www/html/wp-content/plugins/dreamobjects* ## vendor-specific
 
-
-
+## delete exploitable plugins ##
+rm /var/www/html/wp-content/plugins/fast-user-switching* ## not maintained, exploitable (By Tikweb)
 
 ## delete plugins for various reasons (replace this with categories for better understanding) ##
 rm /var/www/html/wp-content/plugins/404s/ ## excessive logging
