@@ -149,6 +149,5 @@ find /var/www/cache/ -not -path "*/opcache*" -type f -delete
 ## Ref: https://pressidium.com/blog/2017/wordpress-object-caching-redis-memcached-and-native-apis/
 ## Ref: https://pressjitsu.com/blog/transient-cache-alternatives/
 ## Ref: https://unix.stackexchange.com/questions/87258/delete-all-files-except-in-a-certain-subdirectory-with-find
-## Ref: https://github.com/littlebizzy/slickstack/issues/57
 
 ## SS_EOF
