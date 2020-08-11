@@ -44,9 +44,9 @@ function wget {
 }
 
 ## mysql alias flags ##
-function mysql {
-    command mysql --user=root --host=localhost --protocol=socket --port=3306 --force "$@"
-}
+# function mysql {
+#    command mysql --user=root --host=localhost --protocol=socket --port=3306 --force "$@"
+# }
 
 ## cp alias flags ##
 function cp {
@@ -136,10 +136,10 @@ chmod 0755 /var/www ## must be 0755
 ## SimpleStack core scripts ##
 chown root:root /var/www/*cron* ## must be root:root
 chown root:root /var/www/ss* ## must be root:root
+chmod 0740 /var/www/*cron* ## 0740 is enough
+chmod 0740 /var/www/ss* ## 0740 is enough
+
 chown www-data:www-data /var/www/wp.sql ## root:root should also work
-chmod 6770 /var/www/*cron* ## 4700 should also work
-chmod 6770 /var/www/ss* ## 4700 should also work
-chmod 0700 /var/www/ss-config
 chmod 6770 /var/www/meta/wp.sql
 
 ## its okay if the SFTP user accesses this stuff (but www-data access is the priority) ##
@@ -234,6 +234,7 @@ rm -R -f /tmp/blacklist*
 # source /var/www/ss-custom
 # source /var/www/ss-install-wpconfig
 # source /var/www/ss-sync
+# source /var/www/ss-perms
 
 ####################################################################################################
 #### SimpleStack: External References Used To Improve This Script (Thanks, Interwebz) ##############

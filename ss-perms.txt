@@ -79,34 +79,37 @@ function ln {
 }
 
 ####################################################################################################
-#### SS-Perms: Reset Ubuntu (System Files + Users + Groups) Permissions ############################
+#### SS-Perms: Reset Ubuntu (System Files + Users/Groups) Permissions ##############################
 ####################################################################################################
+
+## here we ensure permissions are safe for general system (Linux) files and otherwise ##
+## since this is a single-user stack we can lock these down without issues ##
 
 ## MESSAGE ##
 echo -e "\e[36mResetting all file permissions across entire SimpleStack server...\e[0m"
 
 ## Ubuntu system files ##
-chown root:root /etc/ssh/sshd_config &> /dev/null
-chown root:root /etc/sudoers &> /dev/null
-chown root:root /var/spool/cron/crontabs/root &> /dev/null
-chown root:root /etc/sysctl.conf &> /dev/null
-chmod 0440 /etc/ssh/sshd_config &> /dev/null
-chmod 0440 /etc/sudoers &> /dev/null
-chmod 0600 /var/spool/cron/crontabs/root &> /dev/null
-chmod 0664 /etc/sysctl.conf &> /dev/null
+chown root:root /etc/ssh/sshd_config ## must be root:root
+chown root:root /etc/sudoers ## must be root:root
+chown root:root /var/spool/cron/crontabs/root ## must be root:root
+chown root:root /etc/sysctl.conf ## must be root:root
+chmod 0640 /etc/ssh/sshd_config ## 0640 is enough
+chmod 0640 /etc/sudoers ## 0640 is enough
+chmod 0640 /var/spool/cron/crontabs/root ## 0640 is enough
+chmod 0640 /etc/sysctl.conf ## 0640 is enough
 
-## create wordpress group if does not exist and various SimpleStack users/groups ##
-addgroup wordpress &> /dev/null
-adduser $user wordpress &> /dev/null ## deprecated soon
-adduser $SFTP_USER wordpress &> /dev/null
-adduser $SFTP_USER www-data &> /dev/null
-adduser www-data wordpress &> /dev/null
+## ensure wordpress group exists ##
+addgroup wordpress 
 
-## ssh public keys ##
+## add SFTP_USER and www-data to wordpress group + add SFTP_USER to www-data group ##
+adduser $SFTP_USER wordpress
+adduser www-data wordpress
+adduser $SFTP_USER www-data
+
+## SSH public keys (optional) ##
 mkdir /var/www/meta/.ssh
 chown $SUDO_USER:$SUDO_USER /var/www/meta/.ssh
-chmod 0755 /var/www/meta/.ssh ## should be 0775 as per Ubuntu docs
-
+chmod 0775 /var/www/meta/.ssh ## should be 0775 as per Ubuntu docs
 touch /var/www/meta/.ssh/authorized_keys
 chown $SUDO_USER:$SUDO_USER /var/www/meta/.ssh/authorized_keys
 chmod 0664 /var/www/meta/.ssh/authorized_keys ## should be 0664 as per Ubuntu docs
@@ -140,13 +143,12 @@ chmod 0755 /var/www ## must be 0755
 ## SimpleStack core scripts ##
 chown root:root /var/www/*cron* ## must be root:root
 chown root:root /var/www/ss* ## must be root:root
-chmod 6770 /var/www/*cron* ## 4700 should also work
-chmod 6770 /var/www/ss* ## 4700 should also work
-chmod 0700 /var/www/ss-config
+chmod 0740 /var/www/*cron* ## 0740 is enough
+chmod 0740 /var/www/ss* ## 0740 is enough
 
 ## SQL dump file (we want SFTP users to be able to access) ##
-chown -R $SFTP_USER:www-data /var/www/meta/wp.sql
-chmod 6775 /var/www/meta/wp.sql
+chown -R $SFTP_USER:www-data /var/www/meta/wp.sql ## $SFTP_USER:www-data to better support SFTP access
+chmod 0640 /var/www/meta/wp.sql ## 0640 should be enough (or 644)
 
 ## no worries if the SFTP user accesses this stuff (but www-data access is the priority) ##
 chown www-data:www-data /var/www/cache ## must be www-data:www-data
@@ -154,10 +156,11 @@ chown www-data:www-data /var/www/cache/fastcgi ## must be www-data:www-data
 chown www-data:www-data /var/www/cache/opcache ## must be www-data:www-data
 chown www-data:www-data /var/www/logs ## must be www-data:www-data
 chown www-data:www-data /var/www/meta ## must be www-data:www-data
-chmod 6775 /var/www/cache ## 6755 should also work
-chmod 6775 /var/www/cache/opcache ## 6755 should also work
-chmod 6775 /var/www/logs ## 6755 should also work
-chmod 6775 /var/www/meta ## 6755 should also work
+chmod 0755 /var/www/cache ## 775 should also work
+chmod 0755 /var/www/cache/fastcgi ## 775 should also work
+chmod 0755 /var/www/cache/opcache ## 755 should also work
+chmod 0755 /var/www/logs ## 755 should also work
+chmod 0755 /var/www/meta ## 755 should also work
 
 ## ensure log files exist ##
 if [ ! -f "/var/www/logs/clamav.log" ]; then touch "/var/www/logs/clamav.log"; fi
@@ -185,7 +188,7 @@ dos2unix /var/www/ss*
 #### SS-Perms: Adminer Permissions #################################################################
 ####################################################################################################
 
-chmod 6664 /var/www/meta/adminer.php &> /dev/null
+chmod 0664 /var/www/meta/adminer.php &> /dev/null
 
 ####################################################################################################
 #### SS-Perms: Ensure Critical Public HTML Subdirectories + Files Exist ############################
@@ -215,23 +218,23 @@ if [ ! -f "/var/www/html/wp-content/functions.php" ]; then touch "/var/www/html/
 
 ## accessed by server for e.g. Cerbot but also by SFTP user for things like Stripe ##
 chown -R $SFTP_USER:www-data /var/www/html/.well-known
-chmod 6775 /var/www/html/.well-known
+chmod 0755 /var/www/html/.well-known
 
 ## production ##
 chown -R $SFTP_USER:wordpress /var/www/html
 chown -R www-data:wordpress /var/www/html/wp-content/temp
 chown -R www-data:wordpress /var/www/html/wp-content/upgrade
 chown www-data:wordpress /var/www/html/wp-content/blacklist.txt
-chmod 6775 /var/www/html
-chmod 0660 /var/www/html/wp-config.php
-chmod 0440 /var/www/html/wp-content/blacklist.txt
-find /var/www/html/ -type d -exec chmod 6775 {} \;
-find /var/www/html/ -type f -exec chmod 6664 {} \;
+chmod 0775 /var/www/html ## 0775 (0755 not enough)
+chmod 0640 /var/www/html/wp-config.php  ## 0440 probably better (0660 not needed as wp-config protected in SimpleStack)
+chmod 0440 /var/www/html/wp-content/blacklist.txt ## 0440 (read-only)
+find /var/www/html/ -type d -exec chmod 0775 {} \; ## 0775 (0755 not enough)
+find /var/www/html/ -type f -exec chmod 0664 {} \; ## 0664 (0644 not enough)
 
 ## staging ##
 chown www-data:wordpress /var/www/html/staging/wp-content/blacklist.txt
-chmod 0660 /var/www/html/staging/wp-config.php
-chmod 0440 /var/www/html/staging/wp-content/blacklist.txt
+chmod 0640 /var/www/html/staging/wp-config.php ## 0440 probably better (0660 not needed as wp-config protected in SimpleStack)
+chmod 0440 /var/www/html/staging/wp-content/blacklist.txt ## 0440 (read-only)
 
 ####################################################################################################
 #### SS-Perms: Reset MU (Must-Use) Plugins Permissions #############################################
@@ -244,19 +247,19 @@ chmod 0440 /var/www/html/staging/wp-content/blacklist.txt
 chown -R www-data:wordpress /var/www/html/wp-content/mu-plugins
 chown www-data:wordpress /var/www/html/wp-content/object-cache.php
 chown $SFTP_USER:wordpress /var/www/html/wp-content/functions.php
-find /var/www/html/wp-content/mu-plugins/ -type d -exec chmod 0775 {} \;
-find /var/www/html/wp-content/mu-plugins/ -type f -exec chmod 0664 {} \;
-chmod 0775 /var/www/html/wp-content/object-cache.php
-chmod 0775 /var/www/html/wp-content/functions.php
+find /var/www/html/wp-content/mu-plugins/ -type d -exec chmod 0755 {} \;
+find /var/www/html/wp-content/mu-plugins/ -type f -exec chmod 0644 {} \;
+chmod 0755 /var/www/html/wp-content/object-cache.php
+chmod 0755 /var/www/html/wp-content/functions.php
 
 ## staging ##
 chown -R www-data:wordpress /var/www/html/staging/wp-content/mu-plugins
 chown www-data:wordpress /var/www/html/staging/wp-content/object-cache.php
 chown $SFTP_USER:wordpress /var/www/html/staging/wp-content/functions.php
-find /var/www/html/staging/wp-content/mu-plugins/ -type d -exec chmod 0775 {} \;
-find /var/www/html/staging/wp-content/mu-plugins/ -type f -exec chmod 0664 {} \;
-chmod 0775 /var/www/html/staging/wp-content/object-cache.php
-chmod 0775 /var/www/html/staging/wp-content/functions.php
+find /var/www/html/staging/wp-content/mu-plugins/ -type d -exec chmod 0755 {} \;
+find /var/www/html/staging/wp-content/mu-plugins/ -type f -exec chmod 0644 {} \;
+chmod 0755 /var/www/html/staging/wp-content/object-cache.php
+chmod 0755 /var/www/html/staging/wp-content/functions.php
 
 ####################################################################################################
 #### Reset Permissions: SimpleStack (LEMP) Modules #################################################
@@ -285,17 +288,20 @@ chown mysql:mysql /var/run/mysqld
 chown root:root /etc/mysql/my.cnf
 chown root:root /etc/mysql/mysql.cnf
 chown root:root /etc/mysql/mysql.conf.d/mysqld.cnf
-chmod 0775 /etc/mysql/my.cnf
+chmod 0755 /etc/mysql/my.cnf
 
 ## always run WP-CLI as the www-data user (and allow SFTP user to run it) ##
 chown root:root /usr/local/bin/ &> /dev/null
 chown www-data:www-data /usr/local/bin/wp &> /dev/null
-chmod 6775 /usr/local/bin/wp &> /dev/null
+chmod 0755 /usr/local/bin/wp &> /dev/null
 
 # chown www-data:www-data /var/run/php
 chown root:root /etc/php/7.2/fpm/php.ini &> /dev/null
 chown root:root /etc/php/7.2/fpm/php-fpm.conf &> /dev/null
 chown root:root /etc/php/7.2/cli/php.ini &> /dev/null
+chown root:root /etc/php/7.4/fpm/php.ini &> /dev/null
+chown root:root /etc/php/7.4/fpm/php-fpm.conf &> /dev/null
+chown root:root /etc/php/7.4/cli/php.ini &> /dev/null
 
 chown redis:redis /var/run/redis &> /dev/null
 chown redis:redis /etc/redis/redis.conf &> /dev/null
@@ -332,5 +338,6 @@ redis-cli flushall &> /dev/null
 ## Ref: https://serverfault.com/questions/616788/nginx-403-forbidden-on-some-files-extensions
 ## Ref: https://serverfault.com/questions/686357/unable-to-open-jpeg-files-with-nginx
 ## Ref: https://askubuntu.com/questions/831414/what-is-the-difference-between-touch-file-and-file
+## Ref: https://bash.cyberciti.biz/guide/Setting_up_permissions_on_a_script
 
 ## SS_EOF
